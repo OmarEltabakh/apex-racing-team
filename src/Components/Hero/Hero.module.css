@@ -80,7 +80,7 @@
         padding-bottom: 30px;
     }
     .container {
-        padding-top: 80px;
+        padding-top: 5rem;
         flex-direction: column;
     }
     .content,
@@ -107,7 +107,7 @@
         font-size: 45px;
     }
     .container {
-        padding-top: 65px;
+        padding-top: 45px;
     }
 }
 @media(max-width:481px) {
