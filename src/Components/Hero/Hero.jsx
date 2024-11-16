@@ -16,7 +16,7 @@ export default function Hero() {
       <div className={`${style.container} myContainer  h-100 `}>
 
         {/* hero content============================================> */}
-        <div className={`${style.content} `}>
+        <div className={`${style.content} redborder `}>
 
           <h1 className='m-0 '>Welcome to Apex</h1>
           <p className='m-0  w-95 '>We are an electric vehicle team founded in 2018 by students of the Higher Technological Institute, competing locally and internationally.</p>
@@ -29,7 +29,7 @@ export default function Hero() {
         </div>
 
         {/* hero slider===============================================> */}
-        <div className={`${style.sliderContainer}   d-flex justify-content-end   `}>
+        <div className={`${style.sliderContainer}   d-flex justify-content-end  redborder  `}>
 
           <div id="carouselExampleIndicators" className="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="2500">
 
