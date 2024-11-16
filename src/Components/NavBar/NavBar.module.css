@@ -1,0 +1,75 @@
+nav {
+    transition: background-color ease-in .3s;
+}
+
+.navBackground {
+    background-color: #090909 !important;
+
+}
+
+
+.navUl {
+    display: flex;
+
+}
+
+.navUl li a {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primaryColor);
+}
+
+
+.menu {
+    color: var(--primaryColor);
+    display: none !important;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.navUl li a {
+    position: relative;
+}
+
+.navUl li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 1.5px;
+    background-color: #9c1510 !important;
+    bottom: -10px;
+    left: 0;
+    transition: .3s all ease-in;
+}
+
+.navUl li a:hover::after {
+    width: 100%;
+}
+
+.navUl li a.activeLink::after {
+    width: 100% !important;
+}
+
+
+
+
+
+/* responsive design=====================================> */
+
+@media (max-width:1180px) {
+    .navUl {
+        display: none;
+    }
+
+    .menu {
+        display: block !important;
+    }
+
+}
+
+@media (max-width:600px) {
+    .logo img {
+        width: 75%;
+    }
+
+}

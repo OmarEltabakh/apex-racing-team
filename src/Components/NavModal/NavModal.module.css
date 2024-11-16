@@ -1,0 +1,33 @@
+.modalContainer {
+    background-color: #090909 !important;
+    color: var(--primaryColor) !important;
+}
+
+.closeBtn {
+    font-size: 1.25rem !important;
+}
+
+.modalUl {
+    padding: 20px 0;
+}
+
+.modalContainer h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.modalUl li a {
+    color: var(--primaryColor);
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    font-weight: 600;
+
+}
+
+
+.modalUl .activeLink {
+    color: #ae2a26;
+}

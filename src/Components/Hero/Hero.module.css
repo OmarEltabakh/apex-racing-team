@@ -1,0 +1,126 @@
+.Hero {
+    height: 100vh;
+    background-color: black;
+    background-image: url(../../Assets/HomeImage.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(102.61deg, rgba(0, 0, 0, 0.96) 50%, rgba(44, 44, 44, 0.816) 100%);
+}
+
+.content,
+.sliderContainer {
+    width: 50%;
+
+}
+
+.content h1 {
+    color: var(--primaryColor);
+    font-size: 75px;
+    font-weight: 600;
+}
+
+.content p {
+    color: var(--secondaryColor);
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding-top: 24px;
+
+}
+
+.buttons {
+    margin-top: 24px;
+}
+
+.buttons button {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 10px 38px 10px 38px;
+    border-radius: 15px;
+    border: 2px solid #E4E4E4;
+
+}
+
+.buttons .btn1 {
+    background-color: inherit !important;
+    color: var(--primaryColor);
+    margin-right: 13px;
+}
+
+.buttons .btn2 {
+    color: #601719;
+    background-color: var(--primaryColor);
+
+}
+
+/* responsive design==========================> */
+
+@media (max-width:1380px) {
+    .content h1 {
+        font-size: 60px;
+    }
+}
+@media(max-width:1120px) {
+    .Hero {
+        padding-bottom: 30px;
+    }
+    .container {
+        padding-top: 120px;
+        flex-direction: column;
+    }
+    .content,
+    .sliderContainer {
+        width: 80%;
+    }
+    .sliderContainer {
+        margin-top: 40px;
+    }
+}
+@media(max-width:853px) {
+    .content,
+    .sliderContainer {
+        width: 90%;
+    }
+}
+@media (max-width:690px) {
+    .content h1 {
+        font-size: 55px;
+    }
+}
+@media (max-width:575px) {
+    .content h1 {
+        font-size: 45px;
+    }
+}
+@media(max-width:481px) {
+    .content,
+    .sliderContainer {
+        width: 100%;
+
+    }
+}
+@media(max-width:400px) {
+    .content h1 {
+        font-size: 40px;
+    }
+}
+@media(max-width:346px) {
+    .content h1 {
+        font-size: 35px;
+    }
+}

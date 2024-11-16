@@ -1,0 +1,91 @@
+/* global attribute==================================> */
+* {
+    font-family: "Cairo", sans-serif;
+
+}
+
+:root {
+    --primaryColor: #f8f9fa;
+    --secondaryColor: #d1d5db;
+}
+
+.myContainer {
+    width: 90%;
+    margin: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.w-45 {
+    width: 45%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-85 {
+    width: 85%;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.w-95 {
+    width: 95%;
+}
+
+.redborder {
+    border: red solid 3px;
+}
+
+.greenborder {
+    border: green solid 5px;
+}
+
+.cursorPointer{
+    cursor: pointer;
+}
+/* responsive design=======================================> */
+@media(max-width:651px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+@media(max-width:550px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:420px) {
+    
+    .myContainer {
+        width: 95%;
+    }
+}
+@media(max-width:360px) {
+    :root {
+        font-size: 11px;
+    }
+ 
+    .myContainer {
+        width: 97%;
+    }
+}
