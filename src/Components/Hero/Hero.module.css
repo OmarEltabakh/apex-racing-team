@@ -106,6 +106,9 @@
     .content h1 {
         font-size: 45px;
     }
+    .container {
+        padding-top: 65px;
+    }
 }
 @media(max-width:481px) {
     .content,
