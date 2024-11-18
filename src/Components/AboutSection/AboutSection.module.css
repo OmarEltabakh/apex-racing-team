@@ -1,4 +1,109 @@
 .AboutSection {
-    height: 100vh;
+    min-height: 100vh;
     background-color: black;
+    background-image: url(../../Assets//vector1.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* aboutSection content===================================> */
+.content {
+    width: 50%;
+}
+
+.content h2 {
+    color: var(--primaryColor);
+    font-size: 3.75rem;
+    font-weight: 600;
+}
+
+
+.content p {
+    color: var(--secondaryColor);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 31px !important;
+}
+
+.content button {
+    padding: 10px 38px;
+    border-radius: 15px;
+    border: 2px solid #9C1510;
+    box-shadow: 0px 2px 4px 0px #601719;
+    background-color: var(--primaryColor);
+    color: #B31010;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 31px !important;
+
+}
+
+/* aboutImage=============================================>*/
+
+.aboutImage {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+.aboutImage img {
+    box-shadow: 2px 2px 20px 0px #2E0000CC;
+
+}
+
+
+.glow1 {
+    position: absolute;
+    width: 60%;
+    height: 350px;
+    background: radial-gradient(ellipse 100% 100%, rgba(84, 83, 83, 0.7), transparent 100%);
+    border-radius: 100%;
+    filter: blur(130px);
+    left: -3%;
+    top: 30%;
+}
+
+/* responsive design=========================================> */
+@media(max-width:1200px) {
+    .AboutSection {
+        height: auto !important;
+    }
+    .container {
+        flex-direction: column;
+        padding: 80px 0px;
+    }
+    .content,
+    .aboutImage {
+        width: 80% !important;
+    }
+    .aboutImage {
+        justify-content: center !important;
+        margin-top: 40px;
+    }
+}
+@media (max-width:761px) {
+    .aboutImage img {
+        width: 100%;
+    }
+}
+@media (max-width:500px) {
+    .content,
+    .aboutImage {
+        width: 95% !important;
+    }
+}
+@media (max-width:400px) {
+    .content,
+    .aboutImage {
+        width: 100% !important;
+    }
 }

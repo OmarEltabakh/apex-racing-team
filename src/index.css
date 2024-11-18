@@ -1,12 +1,22 @@
 /* global attribute==================================> */
 * {
     font-family: "Cairo", sans-serif;
-
 }
 
 :root {
     --primaryColor: #f8f9fa;
     --secondaryColor: #d1d5db;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+    margin: 0 !important;
 }
 
 .myContainer {
@@ -58,9 +68,10 @@ a {
     border: green solid 5px;
 }
 
-.cursorPointer{
+.cursorPointer {
     cursor: pointer;
 }
+
 /* responsive design=======================================> */
 @media(max-width:651px) {
     :root {
@@ -75,16 +86,17 @@ a {
 }
 
 @media(max-width:420px) {
-    
+
     .myContainer {
         width: 95%;
     }
 }
+
 @media(max-width:360px) {
     :root {
         font-size: 11px;
     }
- 
+
     .myContainer {
         width: 97%;
     }

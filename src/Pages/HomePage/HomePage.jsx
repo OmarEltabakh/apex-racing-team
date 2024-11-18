@@ -7,7 +7,7 @@ const HomePage = () => {
     return <>
 
         <Hero />
-        {/* <AboutSection /> */}
+        <AboutSection />
 
     </>
 }

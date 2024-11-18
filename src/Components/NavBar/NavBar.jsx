@@ -34,7 +34,7 @@ export default function NavBar() {
 
     <NavModal />
 
-    <nav className={` ${style.NavBar} ${scroll && `${style.navBackground}`} fixed-top shadow-lg   `}>
+    <nav className={` ${style.NavBar} ${scroll && `${style.navBackground}`}  fixed-top shadow-lg   `}>
 
       <div className="myContainer d-flex justify-content-between align-items-center py-1  ">
 
@@ -44,7 +44,7 @@ export default function NavBar() {
         </a>
 
         {/* navItem(ul)========================================================> */}
-        <ul className={`${style.navUl}   p-0 m-0 gap-5 `}>
+        <ul className={`${style.navUl}   p-0  gap-5 `}>
 
           {navItem.map((item, index) =>
 
