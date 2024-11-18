@@ -21,7 +21,7 @@ export default function AboutSection() {
 
 
 
-      <div className={`${style.container} myContainer   `}>
+      <div className={`${style.container} myContainer redborder   `}>
 
         {/* aboutContent ==============================================> */}
 
