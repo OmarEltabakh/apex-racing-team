@@ -15,7 +15,7 @@ export default function AboutSection() {
 
   return <>
 
-    <section className={`${style.AboutSection}  d-flex align-item-center position-relative  overflow-hidden `}>
+    <section className={`${style.AboutSection}  d-flex align-item-center   overflow-hidden `}>
 
       <div className={style.glow1} />
 
