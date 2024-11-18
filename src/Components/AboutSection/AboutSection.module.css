@@ -81,13 +81,7 @@
         width: 100%;
     }
 }
-@media (max-width:500px) {
-    .content,
-    .aboutImage {
-        width: 95% !important;
-    }
-}
-@media (max-width:400px) {
+@media (max-width:600px) {
     .content,
     .aboutImage {
         width: 100% !important;

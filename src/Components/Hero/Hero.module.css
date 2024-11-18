@@ -99,30 +99,31 @@
 
 @media (max-width:690px) {
     .content h1 {
-        font-size: 55px;
+        font-size: 50px;
     }
 }
-@media (max-width:575px) {
-    .content h1 {
-        font-size: 40px;
-    }
-}
-@media (max-width:500px) {
 
-    .content,
-    .sliderContainer {
-        width: 95%;
-    }
-}
-@media(max-width:400px) {
-    .content h1 {
-        font-size: 40px;
-    }
+@media (max-width:600px) {
+
     .content,
     .sliderContainer {
         width: 100%;
     }
 }
+
+@media (max-width:575px) {
+    .content h1 {
+        font-size: 40px;
+    }
+}
+
+@media(max-width:400px) {
+    .content h1 {
+        font-size: 40px;
+    }
+
+}
+
 @media(max-width:346px) {
     .content h1 {
         font-size: 35px;
