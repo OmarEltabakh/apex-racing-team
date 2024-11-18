@@ -89,11 +89,19 @@
 
     .content,
     .sliderContainer {
-        width: 80%;
+        width: 90%;
     }
 
     .sliderContainer {
         margin-top: 40px;
+    }
+}
+
+@media (max-width:800px) {
+
+    .content,
+    .sliderContainer {
+        width: 100%;
     }
 }
 
@@ -103,13 +111,7 @@
     }
 }
 
-@media (max-width:600px) {
 
-    .content,
-    .sliderContainer {
-        width: 100%;
-    }
-}
 
 @media (max-width:575px) {
     .content h1 {

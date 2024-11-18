@@ -22,7 +22,7 @@ export default function Hero() {
       <div className={`${style.container} myContainer   h-100 `}>
 
         {/* hero content=============================================================> */}
-        <div className={`${style.content}  `}>
+        <div className={`${style.content}   `}>
 
           <motion.h1 variants={pVariants} initial="hidden" animate="visible" >
             {textAnimation.split("").map((letter, index) => {
