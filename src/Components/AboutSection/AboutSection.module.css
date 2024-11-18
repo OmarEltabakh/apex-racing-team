@@ -12,7 +12,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 /* aboutSection content===================================> */
@@ -25,7 +24,6 @@
     font-size: 3.75rem;
     font-weight: 600;
 }
-
 
 .content p {
     color: var(--secondaryColor);
@@ -58,18 +56,6 @@
 .aboutImage img {
     box-shadow: 2px 2px 20px 0px #2E0000CC;
 
-}
-
-
-.glow1 {
-    position: absolute;
-    width: 60%;
-    height: 350px;
-    background: radial-gradient(ellipse 100% 100%, rgba(84, 83, 83, 0.7), transparent 100%);
-    border-radius: 100%;
-    filter: blur(130px);
-    left: -3%;
-    top: 30%;
 }
 
 /* responsive design=========================================> */

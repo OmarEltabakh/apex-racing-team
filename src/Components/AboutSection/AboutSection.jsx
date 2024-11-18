@@ -15,13 +15,10 @@ export default function AboutSection() {
 
   return <>
 
-    <section className={`${style.AboutSection}  d-flex align-item-center   overflow-hidden `}>
+    <section className={`${style.AboutSection}  d-flex align-item-center  overflow-hidden `}>
 
-      <div className={style.glow1} />
-
-
-
-      <div className={`${style.container} myContainer redborder   `}>
+  
+      <div className={`${style.container} myContainer    `}>
 
         {/* aboutContent ==============================================> */}
 
