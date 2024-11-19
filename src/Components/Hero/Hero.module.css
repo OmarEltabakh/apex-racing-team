@@ -20,8 +20,8 @@
     left: 0;
     right: 0;
     height: 100%;
-    background: linear-gradient(102.61deg, rgba(0, 0, 0, 0.96) 50%, rgba(44, 44, 44, 0.816) 100%);
-}
+
+background-color: rgba(0, 0, 0, 0.75)}
 
 .content,
 .sliderContainer {

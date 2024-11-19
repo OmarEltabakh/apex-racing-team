@@ -34,7 +34,7 @@ export default function NavBar() {
 
     <NavModal />
 
-    <nav className={` ${style.NavBar} ${scroll && `${style.navBackground}`}  fixed-top shadow-lg   `}>
+    <nav className={` ${style.NavBar} ${scroll && `${style.navBackground}`}  fixed-top   `}>
 
       <div className="myContainer d-flex justify-content-between align-items-center py-1  ">
 

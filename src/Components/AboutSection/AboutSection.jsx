@@ -1,10 +1,9 @@
 import React from 'react'
 import style from "./AboutSection.module.css"
-import teamImage from "../../Assets/aboutImage/teamImage.png"
+import teamImage from "../../Assets/HomeImage.jpg"
 import { motion } from 'framer-motion'
 
 export default function AboutSection() {
-
 
   const motionSettings = {
     initial: { opacity: 0 },
@@ -18,11 +17,11 @@ export default function AboutSection() {
     <section className={`${style.AboutSection}  d-flex align-item-center  overflow-hidden `}>
 
   
-      <div className={`${style.container} myContainer    `}>
+      <div className={`${style.container} myContainer`}>
 
         {/* aboutContent ==============================================> */}
 
-        <div className={`${style.content}`}>
+        <div className={`${style.content} `}>
 
           <motion.h2
             {...motionSettings}
@@ -35,6 +34,7 @@ export default function AboutSection() {
             {...motionSettings}
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
+            className='w-90'
           > We are an electric vehicle team that started in
             2018 from students of the Higher Technological
             Institute, 10th of Ramadan. We participate in
@@ -45,6 +45,7 @@ export default function AboutSection() {
             many competitions inside and outside Egypt</motion.p>
 
           <motion.button
+          className='shadow'
             {...motionSettings}
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,13 +55,13 @@ export default function AboutSection() {
         </div>
 
         {/* aboutImage=================================================> */}
-        <div className={`${style.aboutImage}`}>
+        <div className={`${style.aboutImage} `}>
 
           <motion.img
             {...motionSettings}
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className='' src={teamImage} alt="apex racing team" />
+            className='w-95 ' src={teamImage} alt="apex racing team" />
 
         </div>
 
