@@ -21,7 +21,8 @@
     right: 0;
     height: 100%;
 
-background-color: rgba(0, 0, 0, 0.75)}
+    background-color: rgba(0, 0, 0, 0.75)
+}
 
 .content,
 .sliderContainer {
@@ -30,13 +31,13 @@ background-color: rgba(0, 0, 0, 0.75)}
 }
 
 .content h1 {
-    color: var(--primaryColor);
+    color: #f8f9fa;
     font-size: 75px;
     font-weight: 600;
 }
 
 .content p {
-    color: var(--secondaryColor);
+    color: #d1d5db;
     font-size: 1.25rem;
     font-weight: 600;
     margin-top: 24px !important;
@@ -58,13 +59,13 @@ background-color: rgba(0, 0, 0, 0.75)}
 
 .buttons .btn1 {
     background-color: inherit !important;
-    color: var(--primaryColor);
+    color: #f8f9fa;
     margin-right: 13px;
 }
 
 .buttons .btn2 {
     color: #601719;
-    background-color: var(--primaryColor);
+    background-color: #f8f9fa;
 
 }
 

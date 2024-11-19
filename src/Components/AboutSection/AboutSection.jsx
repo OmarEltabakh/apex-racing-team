@@ -17,7 +17,7 @@ export default function AboutSection() {
     <section className={`${style.AboutSection}  d-flex align-item-center  overflow-hidden `}>
 
   
-      <div className={`${style.container} myContainer`}>
+      <div className={`${style.container} myContainer `}>
 
         {/* aboutContent ==============================================> */}
 

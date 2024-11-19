@@ -4,8 +4,13 @@
 }
 
 :root {
-    --primaryColor: #f8f9fa;
-    --secondaryColor: #d1d5db;
+    --primaryColor: black;
+    --secondaryColor: rgb(56, 55, 55);
+    --tertiaryColor: #f5f7fa;
+    --bgc1: #f5f7fa;
+    /* --bgc2: */
+    /* --quaternaryColor: #4caf50; */
+
 }
 
 p,

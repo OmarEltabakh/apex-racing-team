@@ -1,6 +1,6 @@
 .AboutSection {
     min-height: 100vh;
-    background-color: #fbf6f6;
+    background-color: var(--bgc1);
 }
 
 .container {
@@ -15,7 +15,7 @@
 }
 
 .content h2 {
-    color: black !important;
+    color: var(--primaryColor) !important;
     font-size: 3.75rem;
     font-weight: 600;
 }
@@ -31,7 +31,7 @@
     padding: 10px 38px;
     border-radius: 15px;
     border: 2px solid #9C1510;
-    background-color: var(--primaryColor);
+    background-color: #f8f9fa;
     color: #B31010;
     font-size: 1.25rem;
     font-weight: 600;

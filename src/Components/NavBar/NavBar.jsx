@@ -8,14 +8,14 @@ export default function NavBar() {
   // hooks====================================================================>
   const [scroll, setScroll] = useState(false);
   const [activeLink, setActiveLink] = useState("Home");
-  const navItem = ["Home", "AboutUs", "Team Subdivision", "Competitions", "Projects", "ContactUs"];
+  const navItem = ["Home", "AboutUs", "Team Subdivision", "Competitions", "Gallary", "ContactUs"];
 
   // handleScroll ============================================================>
   useEffect(() => {
 
     const handleScroll = () => {
 
-      if (window.scrollY > 100) {
+      if (window.scrollY > 200) {
         setScroll(true)
       }
       else {
@@ -34,9 +34,9 @@ export default function NavBar() {
 
     <NavModal />
 
-    <nav className={` ${style.NavBar} ${scroll && `${style.navBackground}`}  fixed-top   `}>
+    <nav className={` ${style.NavBar} ${scroll && `${style.navBackground}`}   fixed-top  `}>
 
-      <div className="myContainer d-flex justify-content-between align-items-center py-1  ">
+      <div className="myContainer  d-flex justify-content-between align-items-center  py-1  ">
 
         {/* logo==============================================================> */}
         <a className={`${style.logo}`} href="#Home">
