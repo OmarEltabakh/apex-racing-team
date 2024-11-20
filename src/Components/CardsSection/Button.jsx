@@ -1,13 +1,25 @@
 import React from 'react'
-import style from "./TeamSection.module.css"
+import style from "./CardsSection.module.css"
+import { useNavigate } from 'react-router-dom'
 
-export default function Button() {
+export default function Button(props) {
+    const { name } = props;
+    console.log(props);
 
+
+    const navigate = useNavigate()
+
+    const handleNavigation = () => {
+
+        navigate('/MoreDetailsAboutTeams')
+
+
+    }
 
 
 
     return <>
-        <button className={`${style.cta} mt-3`}>
+        <button onClick={handleNavigation} className={`${style.cta} mt-3`}>
 
             <span className={`${style.hoverUnderlineAnimation}`}> More Details </span>
             <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">

@@ -48,7 +48,8 @@ export default function NavBar() {
 
           {navItem.map((item, index) =>
 
-            <li onClick={() => setActiveLink(item)} key={index}><a className={`${item === activeLink && `${style.activeLink}`}`} href={`#${item}`}>{item}</a></li>
+            <li onClick={() => setActiveLink(item)} key={index}><a className={`${item === activeLink && `${style.activeLink}`}`} href={`#${item === "Team Subdivision" ? "Team-Subdivision" : item}`}
+            >{item}</a></li>
 
           )}
 

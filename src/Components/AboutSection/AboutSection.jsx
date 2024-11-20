@@ -14,9 +14,9 @@ export default function AboutSection() {
 
   return <>
 
-    <section className={`${style.AboutSection}  d-flex align-item-center  overflow-hidden `}>
+    <section id='AboutUs' className={`${style.AboutSection}  d-flex align-item-center  overflow-hidden `}>
 
-  
+
       <div className={`${style.container} myContainer `}>
 
         {/* aboutContent ==============================================> */}
@@ -45,7 +45,7 @@ export default function AboutSection() {
             many competitions inside and outside Egypt</motion.p>
 
           <motion.button
-          className='shadow'
+            className='shadow'
             {...motionSettings}
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}

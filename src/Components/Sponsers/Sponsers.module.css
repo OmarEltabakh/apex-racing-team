@@ -1,0 +1,25 @@
+.Sponsers {
+    min-height: 50vh;
+    background-color: var(--bgc2);
+}
+
+.sponserContainer {
+    background-color: var(--bgc1);
+}
+
+.innerCarousel {
+    display: flex;
+}
+
+.carousel {
+    overflow: hidden;
+    cursor: grab;
+}
+
+.item img {
+    pointer-events: none;
+}
+
+.sponserContainer {
+    margin-top: 60px;
+}

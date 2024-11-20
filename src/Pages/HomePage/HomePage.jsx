@@ -1,7 +1,10 @@
 import React from 'react'
 import Hero from '../../Components/Hero/Hero'
-import AboutSection from '../../Components/AboutSection/AboutSection'
-import TeamSection from '../../Components/TeamSection/TeamSection'
+import AboutSection from '../../Components/AboutSection/AboutSection';
+import CardsSection from '../../Components/CardsSection/CardsSection';
+import { competitionsData } from '../../DataAboutComponents/CompetitionsData';
+import { teamData } from "../../DataAboutComponents/TeamData"
+import Sponsers from '../../Components/Sponsers/Sponsers';
 
 const HomePage = () => {
 
@@ -9,7 +12,11 @@ const HomePage = () => {
 
         <Hero />
         <AboutSection />
-        <TeamSection />
+        <CardsSection data={teamData} sectionName="Our Teams" />
+        <Sponsers />
+        <CardsSection data={competitionsData} sectionName="Competitions" />
+
+
 
     </>
 }
