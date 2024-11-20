@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Button(props) {
     const { name } = props;
-    console.log(props);
 
 
     const navigate = useNavigate()

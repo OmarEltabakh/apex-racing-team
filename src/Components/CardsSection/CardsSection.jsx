@@ -13,7 +13,6 @@ import SectionTitle from '../SectionTitle/SectionTitle'
 
 export default function CardsSection(props) {
   const { data, sectionName } = props;
-  console.log(data);
 
 
 

@@ -6,11 +6,13 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 
 export default function Sponsers() {
   // handle scroll carousel ===============================================>
+    useEffect(() => {
+      setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+    }, [])
   const carouselRef = useRef()
   const [width, setWidth] = useState(0);
-  useEffect(() => {
-    setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-  }, [])
+  console.log(width);
+  
 
   return <>
 
