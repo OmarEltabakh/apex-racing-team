@@ -1,13 +1,13 @@
 
 import ever from "../Assets/teamSection/Ever.png"
-import global from "../Assets/teamSection/Global.png"
+import formula from "../Assets/teamSection/Formula.png"
 import shell from "../Assets/teamSection/shell.png"
 import operation from "../Assets/teamSection/Operation.png"
 
 export const teamData = [
-    { img: ever, },
-    { img: global, },
-    { img: shell, },
     { img: operation, },
+    { img: ever, },
+    { img: formula, },
+    { img: shell, },
 ]
 

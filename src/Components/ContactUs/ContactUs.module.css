@@ -1,0 +1,121 @@
+.ContactUs {
+    padding: 40px 0px;
+    padding-bottom: 80px;
+    background-color: var(--bgc2);
+}
+
+.contactUsContainer {
+    background-color: var(--bgc1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+    padding: 80px 25px !important;
+}
+
+/* formContainer================================================> */
+.formContainer {
+    width: 50%;
+}
+
+.formContainer form input,
+.formContainer form textarea {
+    font-size: 1.25rem;
+    border: #e1e2e4 2px solid;
+    box-shadow: none !important;
+
+}
+
+.formContainer form input:focus,
+.formContainer form textarea:focus {
+    border: #e1e2e4 2px solid;
+}
+
+.formContainer form button {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #B31010;
+    padding: 8px 2.375rem;
+    border-radius: .625rem;
+    border: 2px solid #9C1510;
+    background-color: var(--bgc2);
+    transition: .3s ease-in-out transform;
+}
+
+.formContainer form textarea {
+    resize: none !important;
+}
+
+.formContainer form button:hover {
+    transform: translateY(-5%);
+
+}
+
+/* contactImage=================================================> */
+.ContactImage {
+    width: 50%;
+}
+
+/* responsiveDesign=================================================> */
+
+@media (max-width:1200px) {
+    .formContainer {
+        width: 60%;
+    }
+
+    .contactImage {
+        width: 40%;
+    }
+
+    .contactImage img {
+        width: 100% !important;
+    }
+}
+
+@media (max-width:1000px) {
+    .contactUsContainer {
+        flex-direction: column;
+    }
+
+    .formContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .formContainer,
+    .contactImage {
+        width: 90%;
+    }
+
+    .contactImage img {
+        width: 70% !important;
+    }
+
+    .contactImage {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width:800px) {
+
+
+    .formContainer,
+    .contactImage {
+        width: 100%;
+    }
+
+    .formContainer form {
+        width: 100% !important;
+    }
+
+    .contactImage img {
+        width: 70% !important;
+    }
+
+    .contactUsContainer {
+        padding: 80px 5px !important;
+
+    }
+
+
+}

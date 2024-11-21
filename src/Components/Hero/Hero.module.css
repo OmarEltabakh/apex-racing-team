@@ -51,8 +51,8 @@
 .buttons button {
     font-size: 1.25rem;
     font-weight: 600;
-    padding: 10px 38px 10px 38px;
-    border-radius: 15px;
+    padding: 10px 2.375rem;
+    border-radius: .9375rem;
     border: 2px solid #E4E4E4;
 
 }

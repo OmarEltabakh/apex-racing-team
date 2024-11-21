@@ -12,7 +12,7 @@ import SectionTitle from '../SectionTitle/SectionTitle'
 
 
 export default function CardsSection(props) {
-  const { data, sectionName } = props;
+  const { data, sectionName, imgWidth } = props;
 
 
 
@@ -28,7 +28,7 @@ export default function CardsSection(props) {
 
       <div className={`${style.container} myContainer  `}>
 
-        <SectionTitle  title={sectionName} />
+        <SectionTitle title={sectionName} />
 
         <motion.div
           variants={devVariances}
@@ -45,8 +45,11 @@ export default function CardsSection(props) {
               className="col-8 col-xl-3 col-lg-4 col-md-5 col-sm-6"
             >
               <Tilt options={defaultOptions}>
-                <div className={`${style.card} shadow w-100 p-2 rounded-1 py-3 cursorPointer`}>
-                  <img className="w-100" src={item.img} alt="" />
+                <div className={`${style.card} shadow w-100 p-2 rounded-1 py-3 cursorPointer `}>
+
+                  <div className='d-flex justify-content-center'>
+                    <img className={imgWidth} src={item.img} alt="" />
+                  </div>
 
                   <p className=' m-0 p-0 w-100'>{item.desc}</p>
 
