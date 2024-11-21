@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import style from "./NavBar.module.css"
 import logo from "../../Assets/logo.png"
 import NavModal from '../NavModal/NavModal';
+import { Link } from 'react-router-dom'
+
 
 export default function NavBar() {
 
   // hooks====================================================================>
   const [scroll, setScroll] = useState(false);
   const [activeLink, setActiveLink] = useState("Home");
-  const navItem = ["Home", "AboutUs", "Team Subdivision", "Competitions", "Gallary", "ContactUs"];
+  const navItem = ["Home", "AboutUs","Teams", "Gallary", "Dashboard"];
 
   // handleScroll ============================================================>
   useEffect(() => {
@@ -34,22 +36,22 @@ export default function NavBar() {
 
     <NavModal />
 
-    <nav className={` ${style.NavBar} ${scroll && `${style.navBackground}`}   fixed-top  `}>
+    <nav className={` ${style.NavBar} ${scroll && `${style.navBackground}`}   fixed-top shadow  `}>
 
       <div className="myContainer  d-flex justify-content-between align-items-center  py-1  ">
 
         {/* logo==============================================================> */}
-        <a className={`${style.logo}`} href="#Home">
+        <Link className={`${style.logo}`} to="/">
           <img className='w-90' src={logo} alt="Logo" />
-        </a>
+        </Link>
 
         {/* navItem(ul)========================================================> */}
         <ul className={`${style.navUl}   p-0  gap-5 `}>
 
           {navItem.map((item, index) =>
 
-            <li onClick={() => setActiveLink(item)} key={index}><a className={`${item === activeLink && `${style.activeLink}`}`} href={`#${item === "Team Subdivision" ? "Team-Subdivision" : item}`}
-            >{item}</a></li>
+            <li onClick={() => setActiveLink(item)} key={index}><Link className={`${item === activeLink && `${style.activeLink}`}`} to={`${item === "Home" ? "/" : item}`}
+            >{item}</Link></li>
 
           )}
 

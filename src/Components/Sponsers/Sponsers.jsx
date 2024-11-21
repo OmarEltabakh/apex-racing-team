@@ -9,7 +9,6 @@ export default function Sponsers() {
 
   const carouselRef = useRef();
   const [width, setWidth] = useState(0);
-  console.log(width);
 
   useLayoutEffect(() => {
     const updateWidth = () => {
@@ -27,10 +26,10 @@ export default function Sponsers() {
   }, []);
 
   return (
-    <section className={`${style.Sponsers} d-flex flex-column justify-content-center`}>
+    <section className={`${style.Sponsers} d-flex flex-column justify-content-center `}>
       <SectionTitle title="Our Sponsers" />
 
-      <div className={`${style.sponserContainer} rounded-1 py-5 w-100`}>
+      <div className={`${style.sponserContainer} rounded-1 w-100`}>
         <motion.div ref={carouselRef} whileTap={{ cursor: "grabbing" }} className={`${style.carousel}`}>
           <motion.div drag="x" dragConstraints={{ right: 0, left: -width }} className={`${style.innerCarousel}`}>
             {sponsersData.map((item, index) => (

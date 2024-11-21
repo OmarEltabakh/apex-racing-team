@@ -23,7 +23,7 @@ export default function CardsSection(props) {
 
   return <>
 
-    <section id='Team-Subdivision' className={`${style.CardsSection} d-flex justify-content-center align-items-center`}>
+    <section id={`${sectionName === "Our Teams" ? "Team-Subdivision" : sectionName}`} className={`${style.CardsSection} d-flex justify-content-center align-items-center`}>
 
 
       <div className={`${style.container} myContainer  `}>
@@ -53,7 +53,7 @@ export default function CardsSection(props) {
 
                   <p className=' m-0 p-0 w-100'>{item.desc}</p>
 
-                  <Button name={item.name} />
+                  <Button name={" More Details"} />
                 </div>
               </Tilt>
             </motion.div>

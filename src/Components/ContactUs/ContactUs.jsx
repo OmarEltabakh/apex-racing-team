@@ -38,7 +38,7 @@ export default function ContactUs() {
               <input className='form-control mt-4' type="text" placeholder='Email' />
               <textarea className='form-control mt-4' placeholder='Message' rows='5'></textarea>
 
-              <button className='shadow mt-4'>Submit</button>
+              <button className='shadow mt-4 '>Submit</button>
 
             </motion.form>
           </div>

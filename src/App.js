@@ -1,9 +1,11 @@
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import HomePage from './Pages/HomePage/HomePage'
-import Layout from './Components/Layout/Layout'
-import AboutPage from './Pages/AboutPage/AboutPage'
-import MoreDetailsAboutTeams from './Components/MoreDetailsAboutTeams/MoreDetailsAboutTeams'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomePage from './Pages/HomePage/HomePage';
+import Layout from './Components/Layout/Layout';
+import AboutPage from './Pages/AboutPage/AboutPage';
+import CardsSection from './Components/CardsSection/CardsSection';
+import { teamData } from "./DataAboutComponents/TeamData"
+
 
 export default function App() {
 
@@ -12,8 +14,10 @@ export default function App() {
     {
       path: "", element: <Layout />, children: [
         { index: "true", element: <HomePage /> },
-        { path: "AboutPage", element: <AboutPage /> },
-      { path: "MoreDetailsAboutTeams", element: <MoreDetailsAboutTeams /> }
+        { path: "AboutUs", element: <AboutPage /> },
+        {
+          path: "Teams", element: <CardsSection data={teamData} sectionName="Our Teams" imgWidth="w-100" />
+        }
 
       ]
     }

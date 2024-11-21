@@ -4,7 +4,9 @@
 }
 
 .sponserContainer {
+    margin-top: 60px;
     background-color: var(--bgc1);
+    padding: 80px 0px;
 }
 
 .innerCarousel {
@@ -18,8 +20,4 @@
 
 .item img {
     pointer-events: none;
-}
-
-.sponserContainer {
-    margin-top: 60px;
 }

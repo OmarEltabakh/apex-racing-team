@@ -36,8 +36,15 @@
     font-size: 1.25rem;
     font-weight: 600;
     margin-top: 31px !important;
+    transition: .3s ease-in-out transform;
 
 }
+
+.content button:hover {
+    transform: translateY(-5%);
+
+}
+
 
 /* aboutImage=============================================>*/
 .aboutImage {
