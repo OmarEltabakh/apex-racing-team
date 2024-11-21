@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import style from "./NavModal.module.css"
+import { Link } from 'react-router-dom';
 
 export default function NavModal() {
 
-  const navItem = ["Home", "AboutUs", "Team Subdivision", "Competitions", "Projects", "ContactUs"];
+  const navItem = ["Home", "AboutUs", "Teams", "Gallary", "Dashboard"];
   const [activeLink, setActiveLink] = useState("Home");
 
   return <>
@@ -29,12 +30,11 @@ export default function NavModal() {
 
                 {navItem.map((item, index) =>
 
-                  <li onClick={() => setActiveLink(item)} key={index}><a className={`${item === activeLink && `${style.activeLink}`} ${item === "Home" && "pt-0"} `} href={`#${item}`}>{item}</a></li>
+                  <li onClick={() => setActiveLink(item)} key={index}><Link className={`${item === activeLink && `${style.activeLink}`} ${item === "Home" && "pt-0"} `} to={`${item === "Home" ? "/" : item}`} >{item}</Link></li>
 
                 )}
 
               </ul>
-
             </div>
 
 

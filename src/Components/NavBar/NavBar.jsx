@@ -10,7 +10,8 @@ export default function NavBar() {
   // hooks====================================================================>
   const [scroll, setScroll] = useState(false);
   const [activeLink, setActiveLink] = useState("Home");
-  const navItem = ["Home", "AboutUs","Teams", "Gallary", "Dashboard"];
+  const navItem = ["Home", "AboutUs", "Teams", "Gallary", "Dashboard"];
+
 
   // handleScroll ============================================================>
   useEffect(() => {

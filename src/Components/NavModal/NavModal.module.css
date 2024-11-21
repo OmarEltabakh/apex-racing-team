@@ -1,5 +1,5 @@
 .modalContainer {
-    background-color: #090909 !important;
+    background-color: var(--bgc1) !important;
     color: var(--primaryColor) !important;
 }
 
