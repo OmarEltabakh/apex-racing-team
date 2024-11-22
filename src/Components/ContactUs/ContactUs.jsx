@@ -16,11 +16,12 @@ export default function ContactUs() {
 
   return <>
 
-    <section id='ContactUs' className={`${style.ContactUs}  d-flex align-items-center overflow-hidden`}>
-
-      <div className='w-100'>
+    <section id='ContactUs' className={`${style.ContactUs}  `}>
 
         <SectionTitle title="ContactUs" />
+
+      <div className='w-100  overflow-hidden'>
+
 
         {/* contactUsContainer===============================================> */}
         <div className={`${style.contactUsContainer} myContainer   rounded-2 shadow `}>
