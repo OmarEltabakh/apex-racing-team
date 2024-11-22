@@ -16,7 +16,7 @@ export default function ContactUs() {
 
   return <>
 
-    <section id='ContactUs' className={`${style.ContactUs}  d-flex align-items-center`}>
+    <section id='ContactUs' className={`${style.ContactUs}  d-flex align-items-center overflow-hidden`}>
 
       <div className='w-100'>
 

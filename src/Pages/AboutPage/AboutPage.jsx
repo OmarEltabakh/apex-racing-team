@@ -43,7 +43,7 @@ export default function AboutPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     className={`${style.aboutPageImage}  d-flex justify-content-center`}>
 
-                    <img loading='lazy' className='w-100' src={teamImage} alt="" />
+                    <img className='w-100' src={teamImage} alt="" />
 
                 </motion.div>
 

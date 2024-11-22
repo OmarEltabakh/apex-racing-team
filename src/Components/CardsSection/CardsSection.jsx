@@ -23,7 +23,7 @@ export default function CardsSection(props) {
 
   return <>
 
-    <section id={`${sectionName === "Our Teams" ? "Team-Subdivision" : sectionName}`} className={`${style.CardsSection} d-flex justify-content-center align-items-center`}>
+    <section id={`${sectionName === "Our Teams" ? "Team-Subdivision" : sectionName}`} className={`${style.CardsSection} d-flex justify-content-center align-items-center overflow-hidden`}>
 
 
       <div className={`${style.container} myContainer  `}>

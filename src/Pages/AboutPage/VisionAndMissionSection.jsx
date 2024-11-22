@@ -18,7 +18,7 @@ const VisionAndMissionSection = () => {
 
     return <>
 
-        <section className={`${style.visionAndMissionSection}   `}>
+        <section className={`${style.visionAndMissionSection} overflow-hidden   `}>
 
             <div className={`${style.visionAndMissionContainer} myContainer d-flex justify-content-between `}>
 

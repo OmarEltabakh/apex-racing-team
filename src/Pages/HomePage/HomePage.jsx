@@ -16,7 +16,7 @@ const HomePage = () => {
         <AboutSection />
         <CardsSection data={competitionsData} sectionName="Competitions" imgWidth="w-85" />
         <Sponsers />
-        {/* <ContactUs /> */}
+        <ContactUs />
 
 
 

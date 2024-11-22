@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import style from "./NavBar.module.css"
 import logo from "../../Assets/logo.png"
 import NavModal from '../NavModal/NavModal';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 
 export default function NavBar() {
 
   // hooks====================================================================>
   const [scroll, setScroll] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
   const navItem = ["Home", "AboutUs", "Teams", "Gallary", "Dashboard"];
 
 
@@ -51,8 +50,14 @@ export default function NavBar() {
 
           {navItem.map((item, index) =>
 
-            <li onClick={() => setActiveLink(item)} key={index}><Link className={`${item === activeLink && `${style.activeLink}`}`} to={`${item === "Home" ? "/" : item}`}
-            >{item}</Link></li>
+            <li key={index}>
+              <NavLink
+                to={`${item === 'Home' ? '/' : item}`}
+                className={({ isActive }) => (isActive ? `${style.activeLink}` : '')}
+              >
+                {item}
+              </NavLink>
+            </li>
 
           )}
 

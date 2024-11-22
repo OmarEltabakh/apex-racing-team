@@ -27,7 +27,13 @@
 
 }
 
+.modalUl {
+    transition: color ease-in-out .3s;
+
+}
+
 
 .modalUl .activeLink {
     color: #ae2a26;
+    transition: .3s;
 }
