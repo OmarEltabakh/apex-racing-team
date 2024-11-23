@@ -1,1 +1,89 @@
-.Footer {}
+footer {
+    background-color: #bcc3cd;
+    padding: 40px 0;
+}
+
+.footerContainer {
+    display: flex;
+    flex-wrap: wrap !important;
+}
+
+.footerContainer>div {
+    flex: 1 1 30%;
+
+}
+
+/* get in Touch */
+.footerContainer>div h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primaryColor);
+}
+
+
+
+
+.footerContainer>div i {
+    color: #9c1510;
+    font-size: 1.25rem !important;
+}
+
+.footerContainer>div p {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--secondaryColor);
+    font-weight: 600;
+}
+
+/* Quick Links */
+.quickLinks>div a {
+    color: var(--secondaryColor);
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+
+.quickLinks>div {
+    width: fit-content !important;
+}
+
+.quickLinks i {
+    transition: .3s ease-in-out transform;
+}
+
+.quickLinks>div:hover i {
+    transform: translateX(30%) !important;
+}
+
+.quickLinks>div i {
+    font-size: 16px !important;
+}
+
+/* social media */
+.socialMedia i {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #9c1510;
+    color: white !important;
+    cursor: pointer;
+    transition: .3s ease-in-out all;
+}
+
+.socialMedia i:hover {
+    color: #9c1510 !important;
+    background-color: white;
+}
+
+/* responsive design */
+@media (max-width:1017px) {
+    .socialMedia {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width:309px) {
+    .quickLinks {
+        margin-top: 60px;
+    }
+}

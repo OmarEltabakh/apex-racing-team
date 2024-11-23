@@ -81,6 +81,20 @@
 
 }
 
+/* videoContainerSection ===========================================>*/
+.closeButton {
+
+    position: absolute;
+    top: -10%;
+    right: -1%;
+    font-size: 1.875rem;
+    z-index: 1050;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+
+
+}
+
 /* responsive design=======================================> */
 @media (max-width:1200px) {
 
@@ -106,7 +120,7 @@
         width: 80% !important;
     }
 
-    .video {
+    .videoContainer {
         width: 70% !important;
     }
 
@@ -136,7 +150,7 @@
         width: 100%;
     }
 
-    .video {
+    .videoContainer {
         width: 90% !important;
     }
 
