@@ -5,6 +5,7 @@ import Layout from './Components/Layout/Layout';
 import AboutPage from './Pages/AboutPage/AboutPage';
 import CardsSection from './Components/CardsSection/CardsSection';
 import { teamData } from "./DataAboutComponents/TeamData"
+import CompetitionDetails from './Components/CompetitionDetails/CompetitionDetails';
 
 
 export default function App() {
@@ -15,9 +16,11 @@ export default function App() {
       path: "", element: <Layout />, children: [
         { index: "true", element: <HomePage /> },
         { path: "AboutUs", element: <AboutPage /> },
+        { path: "CompetitionDetails", element: <CompetitionDetails /> },
         {
           path: "Teams", element: <CardsSection data={teamData} sectionName="Our Teams" imgWidth="w-100" />
         }
+
 
       ]
     }

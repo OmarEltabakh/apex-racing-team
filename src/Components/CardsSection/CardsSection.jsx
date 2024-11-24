@@ -53,7 +53,7 @@ export default function CardsSection(props) {
 
                   <p className=' m-0 p-0 w-100'>{item.desc}</p>
 
-                  <Button name={" More Details"} />
+                  <Button navigation="CompetitionDetails" data={data} buttonId={item.id} />
                 </div>
               </Tilt>
             </motion.div>

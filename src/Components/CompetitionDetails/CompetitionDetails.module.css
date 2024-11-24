@@ -1,0 +1,83 @@
+.CompetitionDetails {
+    background-color: var(--bgc1);
+    padding-bottom: 60px;
+    min-height: 100vh;
+}
+
+.CompetitionDetailsContainer {
+    margin-top: 170px;
+    display: flex;
+
+}
+
+
+/* competitionDetailsContent=======================================> */
+.competitionDetailsContent {
+    width: 50%;
+
+
+}
+
+.competitionDetailsContent h2 {
+    font-size: 3.75rem;
+    font-weight: 600px;
+    color: var(--primaryColor);
+}
+
+.competitionDetailsContent p {
+    color: rgb(56, 55, 55);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 31px !important;
+}
+
+
+/* cometitionDetailsImage============================================> */
+.cometitionDetailsImage {
+    width: 50%;
+}
+
+.cometitionDetailsImage img {
+    box-shadow: 2px 2px 10px 0px;
+
+}
+
+/* responsiveDesgin===================================================> */
+@media (max-width:1200px) {
+    .CompetitionDetailsContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cometitionDetailsImage, .competitionDetailsContent {
+        width: 90%;
+    }
+
+    .cometitionDetailsImage {
+        margin-top: 60px;
+    }
+
+    .cometitionDetailsImage img {
+        width: 80% !important;
+    }
+    .competitionDetailsContent p {
+        width: 100%;
+    }
+}
+
+@media (max-width:800px) {
+
+
+    .competitionDetailsContent p {
+        width: 100%;
+    }
+
+    .cometitionDetailsImage, .competitionDetailsContent {
+        width: 100%;
+    }
+
+
+    .cometitionDetailsImage img {
+        width: 100% !important;
+    }
+}
