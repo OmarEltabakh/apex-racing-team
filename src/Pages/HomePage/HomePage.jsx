@@ -14,7 +14,7 @@ const HomePage = () => {
         <NavBar />
         <Hero />
         <AboutSection />
-        <CardsSection data={competitionsData} sectionName="Competitions" imgWidth="w-85" />
+        <CardsSection data={competitionsData} sectionName="Competitions" imgWidth="w-85" navigation="CompetitionDetails" />
         <Sponsers />
         <ContactUs />
 

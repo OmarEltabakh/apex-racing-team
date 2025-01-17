@@ -35,6 +35,16 @@ footer {
     font-weight: 600;
 }
 
+.getInTouch i {
+    cursor: pointer;
+    transition: .2s transform ease-in-out;
+}
+
+.getInTouch i:hover {
+    transform: scale(1.07);
+
+}
+
 /* Quick Links */
 .quickLinks>div a {
     color: var(--secondaryColor);

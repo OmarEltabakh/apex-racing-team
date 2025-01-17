@@ -3,6 +3,7 @@ import style from "./CardsSection.module.css"
 import { useNavigate } from 'react-router-dom'
 
 export default function Button(props) {
+    
     const { navigation, data, buttonId } = props;
 
 

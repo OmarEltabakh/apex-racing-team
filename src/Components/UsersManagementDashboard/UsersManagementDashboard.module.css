@@ -1,0 +1,48 @@
+.UsersManagementDashboard {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: var(--bgc2);
+    padding: 1.5625rem 1.25rem;
+    border: solid 2px #d4d5d6;
+
+}
+
+.searchInput {
+    padding: .5rem;
+    margin-bottom: var(--margin-between-items);
+    width: 12.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.cell, .teamCell, .emailCell {
+    font-size: 1rem !important;
+    color: var(--secondaryColor);
+}
+
+.teamCell, .emailCell {
+    width: 400px !important;
+}
+
+.buttons {
+    display: flex;
+}
+
+.deleteButton, .updateButton {
+    font-size: .9375rem;
+    background-color: #e13647;
+    padding: .375rem .5rem;
+    border-radius: 3px;
+    color: white;
+    border: none;
+    margin-right: .3125rem;
+}
+
+.updateButton {
+    background-color: #1a8653;
+}

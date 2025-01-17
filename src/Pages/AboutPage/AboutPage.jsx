@@ -5,6 +5,7 @@ import teamImage from "../../Assets/aboutPage/teamImage.webp";
 import VideoSection from './VideoSection';
 import VisionAndMissionSection, { motionSettings } from './VisionAndMissionSection';
 import { motion } from 'framer-motion';
+import ScrollToTop from '../../Components/ScrollToTop/ScrollToTop';
 
 
 
@@ -12,7 +13,8 @@ export default function AboutPage() {
 
 
     return <>
-        <section className={`${style.aboutPage} d-flex align-items-center overflow-hidden`}>
+        <ScrollToTop />
+        <section className={`${style.aboutPage} d-flex align-items-center overflow-hidden `}>
 
             {/* aboutPagecontainer==================================================> */}
             <div className={`${style.aboutPageContainer} myContainer   `}>

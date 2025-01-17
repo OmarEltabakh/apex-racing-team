@@ -9,7 +9,7 @@ export default function NavBar() {
 
   // hooks====================================================================>
   const [scroll, setScroll] = useState(false);
-  const navItem = ["Home", "AboutUs", "Teams", "Gallary", "Dashboard"];
+  const navItem = ["Home", "AboutUs", "Teams", "Gallery", "Dashboard"];
 
 
   // handleScroll ============================================================>
@@ -52,7 +52,7 @@ export default function NavBar() {
 
             <li key={index}>
               <NavLink
-                to={`${item === 'Home' ? '/' : item}`}
+                to={`${item === 'Home' ? '/' : item === "Dashboard" ? "dashboardPage" : item}`}
                 className={({ isActive }) => (isActive ? `${style.activeLink}` : '')}
               >
                 {item}

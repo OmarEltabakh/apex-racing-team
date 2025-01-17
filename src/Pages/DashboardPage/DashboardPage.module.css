@@ -1,0 +1,12 @@
+.DashboardPage {
+    min-height: 100vh;
+    background-color: var(--bgc1);
+    overflow: auto;
+
+}
+
+/* DashboardPageContainer */
+.DashboardPageContainer {
+    margin-top: var(--spacing-top-section);
+    margin-bottom: var(--spacing-between-sections);
+}

@@ -5,19 +5,11 @@ nav {
 
 .navUl li a {
     font-size: 20px;
-    /* color: #f8f9fa !important; */
     color: var(--primaryColor) !important;
     font-weight: 600;
 }
 
 
-/* .navBackground {
-
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-} */
-
-/* .navBackground li a {
-} */
 
 .navUl li a {
     color: var(--primaryColor);

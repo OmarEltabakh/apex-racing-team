@@ -1,0 +1,76 @@
+.learningPhase {
+    background-color: var(--bgc2);
+    overflow: auto;
+    min-height: 100vh;
+}
+
+/* learningPhaseContainer */
+.learningPhaseContainer {
+    margin-top: var(--spacing-top-section);
+    display: flex;
+    margin-bottom: var(--spacing-between-sections);
+    justify-content: space-between;
+}
+
+/* videoContainer */
+.videoContainer {
+    width: 65%;
+    height: 31.25rem;
+    position: relative;
+}
+
+.videoContainer video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 1px 1px 10px 0px;
+    border-radius: 4px;
+
+}
+
+/* videoList */
+.videoListContainer {
+    width: 33%;
+}
+
+
+
+@media (max-width:1200px) {
+    .learningPhaseContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .videoContainer {
+        width: 90%;
+        height: auto;
+    }
+
+    .videoListContainer {
+        width: 90%;
+        margin-top: 3.75rem;
+    }
+
+    .learningPhase {
+        min-height: auto;
+    }
+
+}
+
+@media (max-width:800px) {
+
+
+    .videoContainer {
+        width: 100%;
+    }
+
+    .videoListContainer {
+        width: 100%;
+        margin-top: 60px;
+    }
+
+    .learningPhase {
+        min-height: auto;
+    }
+
+}

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from "./Hero.module.css";
 import HeroSlider from '../HeroSlider/HeroSlider';
 import { motion } from 'framer-motion';
 import { pVariants, spanVariants, motionSettings, transitions } from './HeroAnimation';
+import { useNavigate } from 'react-router-dom';
+import { gallaryContext } from '../../Context/GallaryContext';
 
 
 
@@ -10,6 +12,23 @@ export default function Hero() {
 
   // text Animation======================================================>
   const textAnimation = "Welcome to Apex";
+
+  // hooks================================================================>
+  const navigation = useNavigate();
+
+
+
+
+  // handle navigation ===================================================>
+  const handleNavigation = (page) => {
+    navigation(`/${page}`)
+
+  }
+
+  // get slider data=========================>
+  const { data, loading } = useContext(gallaryContext);
+  console.log(data);
+
 
 
 
@@ -36,11 +55,11 @@ export default function Hero() {
 
           {/* sign in and sign up button================================================> */}
           <div className={`${style.buttons}    `}>
-            <motion.button {...motionSettings} transition={transitions.signIn} className={`${style.btn1}`}>
+            <motion.button onClick={() => handleNavigation("signIn")} {...motionSettings} transition={transitions.signIn} className={`${style.btn1}`}>
               Sign In
             </motion.button>
 
-            <motion.button {...motionSettings} transition={transitions.signUp} className={`${style.btn2}`}>
+            <motion.button onClick={() => handleNavigation("signUp")} {...motionSettings} transition={transitions.signUp} className={`${style.btn2}`}>
               Sign Up
             </motion.button>
           </div>

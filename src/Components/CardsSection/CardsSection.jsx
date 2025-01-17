@@ -12,7 +12,8 @@ import SectionTitle from '../SectionTitle/SectionTitle'
 
 
 export default function CardsSection(props) {
-  const { data, sectionName, imgWidth } = props;
+  
+  const { data, sectionName, imgWidth, navigation } = props;
 
 
 
@@ -23,10 +24,10 @@ export default function CardsSection(props) {
 
   return <>
 
-    <section id={`${sectionName === "Our Teams" ? "Team-Subdivision" : sectionName}`} className={`${style.CardsSection} d-flex justify-content-center align-items-center overflow-hidden`}>
+    <section id={`${sectionName === "Our Teams" ? "Team-Subdivision" : sectionName}`} className={`${style.CardsSection} d-flex justify-content-center align-items-center overflow-hidden  `}>
 
 
-      <div className={`${style.container} myContainer  `}>
+      <div className={`${style.container} myContainer   `}>
 
         <SectionTitle title={sectionName} />
 
@@ -53,7 +54,7 @@ export default function CardsSection(props) {
 
                   <p className=' m-0 p-0 w-100'>{item.desc}</p>
 
-                  <Button navigation="CompetitionDetails" data={data} buttonId={item.id} />
+                  <Button navigation={`${navigation}`} data={data} buttonId={item.id} />
                 </div>
               </Tilt>
             </motion.div>

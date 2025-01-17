@@ -1,0 +1,132 @@
+.galleryPage {
+  background-color: var(--bgc1);
+  min-height: 100vh;
+  overflow: auto;
+}
+
+/* galleryPageContainer */
+.galleryPageContainer {
+  margin-top: var(--spacing-top-section);
+  display: flex;
+  margin-bottom: var(--spacing-between-sections);
+}
+
+
+/* gallerySideBar */
+.gallerySideBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #d7d7d7;
+  z-index: 9999999999999;
+  width: 17.5rem;
+  transition: .5s all ease-in-out;
+}
+
+.sideBarLogo {
+  width: 50px;
+  height: 50px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  right: 0;
+  transform: translateX(100%);
+  top: 10%;
+  padding: 0 !important;
+  background-color: var(--bgc1);
+  cursor: pointer;
+  border: 1px solid #dee2e6;
+  border-left: 0;
+}
+
+.sideBarMenu {
+  margin-top: 6rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+  font-size: var(--font-size-p);
+  font-weight: 600;
+}
+
+.sideBarMenu li {
+  padding-left: 40px !important;
+  border-bottom: 1px solid #c7c8c9;
+  padding-bottom: 10px;
+}
+
+.sideBarMenu li.teamLi {
+  border-top: 1px solid #c7c8c9;
+  padding-top: 10px;
+
+}
+
+.sideBarMenu li a {
+  transition: .2s color ease-in-out;
+  color: var(--primaryColor);
+  cursor: pointer;
+
+}
+
+.sideBarMenu li a:hover {
+  color: #9c1510;
+}
+
+
+
+/* .galleryImages */
+.galleryImages {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.galleryImages .imgContainer {
+  width: 32%;
+  height: 300px;
+  overflow: hidden;
+  box-shadow: 1px 1px 10px 0px;
+  border-radius: 4px;
+}
+
+.imgContainer:hover img {
+  transform: scale(1.04);
+}
+
+.imgContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .3s all ease-in-out;
+  cursor: pointer;
+
+}
+
+@media (max-width:1392px) {
+  .galleryImages .imgContainer {
+    width: 45%;
+
+  }
+}
+
+@media (max-width:800px) {
+
+
+
+  .galleryImages .imgContainer {
+    width: 80%;
+
+  }
+}
+
+@media (max-width:600px) {
+
+  .galleryImages .imgContainer {
+    width: 100%;
+
+  }
+
+}
