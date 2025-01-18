@@ -26,8 +26,9 @@ export default function Hero() {
   }
 
   // get slider data=========================>
-  const { data, loading } = useContext(gallaryContext);
+  const { data, loading }= useContext(gallaryContext);
   console.log(data);
+
 
 
 
