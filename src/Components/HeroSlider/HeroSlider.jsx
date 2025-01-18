@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import style from "./HeroSlider.module.css"
 import car1 from "../../Assets/HomeSection/car1.png"
 import car2 from "../../Assets/HomeSection/car2.png"
 import car3 from "../../Assets/HomeSection/car3.png"
+import { gallaryContext } from '../../Context/GallaryContext'
 
 export default function HeroSlider() {
 
 
+
+  // get slider data=========================>
+  const { gallaryData, loading } = useContext(gallaryContext);
+
+  const carsData = gallaryData?.data.map(item => {
+    if (item.category === 'cars') {
+      return item;
+    }
+    return null;
+  }).filter(item => item !== null);
+
+
+  
 
   return <>
 
@@ -20,17 +34,13 @@ export default function HeroSlider() {
 
       <div className="carousel-inner ">
 
-        <div className="carousel-item active  ">
-          <img src={car1} className="d-block w-90 m-auto " alt="formula" />
-        </div>
+        {carsData?.map((item, index) =>
+          <div key={index} className="carousel-item active  ">
+            <img src={item.Image.secure_url} className="d-block w-90 m-auto " alt="formula" />
+          </div>
 
-        <div className="carousel-item">
-          <img src={car2} className="d-block w-90 m-auto " alt="shell" />
-        </div>
+        )}
 
-        <div className="carousel-item">
-          <img src={car3} className="d-block w-90 m-auto " alt="ever" />
-        </div>
 
       </div>
 

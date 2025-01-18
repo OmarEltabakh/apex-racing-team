@@ -29,18 +29,18 @@
 
 }
 
-.signUnForm {
+.signUpForm {
     width: 100%;
 }
 
-.signUnForm label {
+.signUpForm label {
     font-size: var(--font-size-h6);
     font-weight: 600;
     color: #595c5f;
     margin-bottom: 10px;
 }
 
-.signUnForm input {
+.signUpForm input {
     width: 100%;
     margin-bottom: var(--margin-between-items);
     padding: .5rem .3125rem;
@@ -50,12 +50,12 @@
 
 }
 
-.signUnForm input:focus {
+.signUpForm input:focus {
     outline: none !important;
 
 }
 
-.signUnForm button {
+.signUpForm button {
     width: 100%;
     padding: .75rem .625rem;
     font-size: var(--font-size-h6);
@@ -67,7 +67,7 @@
     transition: .3s transform ease-in-out;
 }
 
-.signUnForm button:hover {
+.signUpForm button:hover {
     transform: translateY(-5%);
 }
 

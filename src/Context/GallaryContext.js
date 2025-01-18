@@ -10,21 +10,21 @@ const GallaryContextProvider = (props) => {
 
 
     // hooks
-    const [data, setData] = useState(null);
+    const [gallaryData, setGallaryData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
 
 
-    // fetch gallary Images =================================================>
+    // fetch gallary Data =================================================>
     useEffect(() => {
 
         const fetchData = async () => {
 
             try {
                 setLoading(true);
-                const response = await axios.get(`https://apexracingteam-eg.onrender.com/gallery/get-gallery-item`);
-                setData(response);
+                const { data } = await axios.get(`https://apexracingteam-eg.onrender.com/gallery/get-gallery-item`);
+                setGallaryData(data);
             }
             catch (error) {
                 setError(error);
@@ -32,7 +32,7 @@ const GallaryContextProvider = (props) => {
             } finally {
                 setLoading(false);
             }
-            
+
         }
 
         // fetch
@@ -42,7 +42,7 @@ const GallaryContextProvider = (props) => {
 
 
 
-    return <gallaryContext.Provider value={{ data, loading }}>
+    return <gallaryContext.Provider value={{ gallaryData, loading }}>
         {props.children}
     </gallaryContext.Provider>
 

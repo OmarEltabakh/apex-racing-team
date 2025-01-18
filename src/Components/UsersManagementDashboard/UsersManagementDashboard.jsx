@@ -1,29 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from "./UsersManagementDashboard.module.css";
 import DataTable from 'react-data-table-component';
 import { columns } from './Columns';
+import AddUsers from './AddUsers';
+import axios from 'axios';
+
 
 export default function UsersManagementDashboard() {
 
+  // hooks================================>
   const [searchQuery, setSearchQuery] = useState('');
+  const [membersData, setMembersData] = useState("")
+
+  const token = "accesstoken_" + localStorage.getItem("token")
+
+  const getAllMembers = async () => {
+    const { data } = await axios.get(`https://apexracingteam-eg.onrender.com/admins/all-members`, {
+      headers: {
+        token
+      }
+    })
+    setMembersData(data);
+    console.log(data);
 
 
-  const data = [
-    { id: 1, name: 'Omar mohamed', email: 'Omar@gmail.com', role: 'Head', team: 'Cost And Manufacturing' },
-    { id: 1, name: 'Omar', email: 'Omar.mohamed@gmail.com', role: 'Head', team: 'Cost And Manufacturing' },
-    { id: 1, name: 'Omar', email: 'Omar@gmail.com', role: 'Head', team: 'Cost And Manufacturing' },
-    { id: 1, name: 'Omar', email: 'Omar@gmail.com', role: 'Head', team: 'Cost And Manufacturing' },
-    { id: 1, name: 'Omar', email: 'Omar@gmail.com', role: 'Head', team: 'Cost And Manufacturing' },
-    { id: 1, name: 'Omar', email: 'Omar@gmail.com', role: 'Head', team: 'Cost And Manufacturing' },
-    { id: 1, name: 'Omar', email: 'Omar@gmail.com', role: 'Head', team: 'Cost And Manufacturing' },
-    { id: 1, name: 'Omar', email: 'Omar@gmail.com', role: 'Head', team: 'Cost And Manufacturing' },
-    { id: 1, name: 'Omar', email: 'Omar@gmail.com', role: 'Head', team: 'Cost And Manufacturing' },
-  ];
+  }
+
+
+  useEffect(() => {
+  }, [])
 
 
 
   // filter data
-  const filteredData = data.filter(row => {
+  const filteredData = [].filter(row => {
     return (
       row.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       row.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -47,13 +57,24 @@ export default function UsersManagementDashboard() {
 
   };
 
-  return (
-    <div className={`${style.UsersManagementDashboard} shadow-lg`}>
+  return <>
+    <AddUsers />
+    <div className={`${style.UsersManagementDashboard} shadow-lg `}>
 
-      <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className={style.searchInput} />
+      <div className='d-flex justify-content-between align-items-center'>
 
-      <DataTable className={`${style.dataTable}`}  columns={columns} data={filteredData} pagination highlightOnHover customStyles={customStyles} />
-      
+        <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className={style.searchInput} />
+
+        <button data-bs-toggle="modal" data-bs-target="#newModal" className={`${style.addUserButton}`}>
+          <i className="fa-solid fa-user-plus pe-2 "></i>
+          Add User
+        </button>
+
+      </div>
+
+
+      <DataTable className={`${style.dataTable}`} columns={columns} data={filteredData} pagination highlightOnHover customStyles={customStyles} />
+
     </div>
-  );
+  </>
 }

@@ -20,7 +20,7 @@ export default function SideBarDashboard() {
   };
 
   const menuItems = [
-    { id: 1, icon: 'fa-user', text: 'Users Management', path: 'usersManagementDashboard' },
+    { id: 1, icon: 'fa-user', text: 'Users Management', path: '' },
     { id: 2, icon: 'fa-image', text: 'Gallery', path: 'GalleryDashboard' },
     { id: 3, icon: 'fa-book', text: 'Learning Phase', path: 'LearningPhaseDashboard' }
   ];

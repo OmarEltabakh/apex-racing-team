@@ -36,7 +36,7 @@ export default function App() {
         { path: "signUP", element: <SignUp /> },
         {
           path: "dashboardPage", element: <DashboardPage />, children: [
-            { path: "usersManagementDashboard", element: <UsersManagementDashboard /> },
+            { path: "", element: <UsersManagementDashboard /> },
             { path: "GalleryDashboard", element: <GalleryDashboard /> },
             { path: "LearningPhaseDashboard", element: <LearningPhaseDashboard /> },
           ]

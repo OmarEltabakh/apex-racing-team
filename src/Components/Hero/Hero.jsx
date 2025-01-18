@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import style from "./Hero.module.css";
 import HeroSlider from '../HeroSlider/HeroSlider';
 import { motion } from 'framer-motion';
 import { pVariants, spanVariants, motionSettings, transitions } from './HeroAnimation';
 import { useNavigate } from 'react-router-dom';
-import { gallaryContext } from '../../Context/GallaryContext';
 
 
 
@@ -24,10 +23,6 @@ export default function Hero() {
     navigation(`/${page}`)
 
   }
-
-  // get slider data=========================>
-  const { data, loading }= useContext(gallaryContext);
-  console.log(data);
 
 
 
