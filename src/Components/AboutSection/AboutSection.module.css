@@ -1,12 +1,14 @@
 .AboutSection {
-    min-height: 100vh;
     background-color: var(--bgc1);
 }
 
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: var(--spacing-between-sections);
+    margin-bottom: var(--spacing-between-sections);
+}
+.aboutSectionTitle{
+    display: flex;
 }
 
 /* aboutSection content===================================> */
@@ -16,35 +18,17 @@
 
 .content h2 {
     color: var(--primaryColor) !important;
-    font-size: 3.75rem;
+    font-size: var(--font-size-h2);
     font-weight: 600;
 }
 
 .content p {
-    color: rgb(56, 55, 55);
-    font-size: 1.25rem;
+    color: var(--secondaryColor);
+    font-size: var(--font-size-p);
     font-weight: 600;
-    margin-top: 31px !important;
+    margin-top: var(--margin-between-items) !important;
+    text-align: justify;
 }
-
-.content button {
-    padding: 10px 2.375rem;
-    border-radius: .9375rem;
-    border: 2px solid #9C1510;
-    background-color: #f8f9fa;
-    color: #B31010;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-top: 31px !important;
-    transition: .3s ease-in-out transform;
-
-}
-
-.content button:hover {
-    transform: translateY(-5%);
-
-}
-
 
 /* aboutImage=============================================>*/
 .aboutImage {
@@ -59,40 +43,59 @@
 
 /* responsive design=========================================> */
 @media(max-width:1200px) {
-    .AboutSection {
-        height: auto !important;
-    }
 
     .container {
         flex-direction: column;
-        padding: 80px 0px;
     }
 
-    .content,
-    .aboutImage {
+    .content {
         width: 90% !important;
+
+    }
+
+    .content p {
+        text-align: center !important;
+    }
+    .aboutSectionTitle{
+        justify-content: center;
+    }
+    
+
+    .aboutImage {
+        width: 70% !important;
     }
 
     .aboutImage {
         justify-content: center !important;
-        margin-top: 40px;
+        margin-top: var(--margin-between-items);
     }
 }
+@media(max-width:1000px) {
 
+    .aboutImage {
+        width: 80% !important;
+    }
+
+}
 @media (max-width:800px) {
 
-    .content,
-    .aboutImage {
+    .content {
+        width: 100% !important;
+    }
+    .aboutImage{
+        
+        width: 90% !important;
+    }
+
+   
+}
+@media (max-width:600px) {
+
+    .aboutImage{
+        
         width: 100% !important;
     }
 
-    .aboutImage img {
-        width: 90%;
-    }
+   
 }
 
-@media (max-width:500px) {
-    .aboutImage img {
-        width: 100%;
-    }
-}

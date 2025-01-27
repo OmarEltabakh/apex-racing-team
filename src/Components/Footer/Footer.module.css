@@ -1,6 +1,6 @@
 footer {
     background-color: #bcc3cd;
-    padding: 40px 0;
+    padding: 2.5rem 0;
 }
 
 .footerContainer {
@@ -66,7 +66,7 @@ footer {
 }
 
 .quickLinks>div i {
-    font-size: 16px !important;
+    font-size: 1rem !important;
 }
 
 /* social media */
@@ -86,14 +86,30 @@ footer {
 }
 
 /* responsive design */
-@media (max-width:1017px) {
+@media (max-width:992px) {
     .socialMedia {
-        margin-top: 60px;
+        margin-top: 1.875rem;
+        text-align: center;
+    }
+
+    .socialMedia>div {
+        justify-content: center;
     }
 }
 
 @media (max-width:309px) {
     .quickLinks {
-        margin-top: 60px;
+        margin-top: 1.875rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .getInTouch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
     }
 }

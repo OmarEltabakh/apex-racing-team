@@ -1,1 +1,54 @@
-.LearningPhaseDashboard {}
+/* LearningPhaseDashboard styles */
+
+.LearningPhaseDashboard {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: var(--bgc2);
+  padding: 1.5625rem 1.25rem;
+  border: solid 2px #d4d5d6;
+}
+
+.learningPhaseDashboardHeader {
+  margin-bottom: var(--margin-between-items);
+
+}
+
+.searchInput {
+  padding: .5rem;
+  width: 12.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.searchInput:focus {
+  outline: none !important;
+}
+
+
+
+.createdAtCell, .descriptionCell {
+  font-size: 1rem !important;
+  color: var(--secondaryColor);
+}
+
+
+
+
+.deleteButton {
+  background-color: #e13647;
+  padding: .375rem .5rem;
+  border-radius: 3px;
+  color: white;
+  border: none;
+  font-size: 0.9375rem;
+}
+
+.addVideoButton {
+  background-color: #1d4ed8;
+  color: white;
+  border: none;
+  padding: .5rem 1rem;
+  border-radius: 3px;
+  font-size: 1.125rem;
+}

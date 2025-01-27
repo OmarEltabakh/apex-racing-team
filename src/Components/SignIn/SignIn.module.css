@@ -17,7 +17,7 @@
     font-size: var(--font-size-h2);
     font-weight: 600;
     color: var(--primaryColor);
-    margin-bottom: var(--section-title-space) !important;
+    margin-bottom: var(--margin-between-items) !important;
 }
 
 .signInContent {

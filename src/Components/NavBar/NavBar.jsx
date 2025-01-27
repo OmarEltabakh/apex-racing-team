@@ -1,79 +1,89 @@
-import React, { useEffect, useState } from 'react'
-import style from "./NavBar.module.css"
-import logo from "../../Assets/logo.png"
+import React, { useMemo, useState, useEffect } from 'react';
+import style from "./NavBar.module.css";
+import logo from "../../Assets/logo.webp";
 import NavModal from '../NavModal/NavModal';
-import { Link, NavLink } from 'react-router-dom'
-
+import { Link, NavLink } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 
 export default function NavBar() {
+  const [role, setRole] = useState(null);
 
-  // hooks====================================================================>
-  const [scroll, setScroll] = useState(false);
-  const navItem = ["Home", "AboutUs", "Teams", "Gallery", "Dashboard"];
-
-
-  // handleScroll ============================================================>
+  // Decode the token and get the role
   useEffect(() => {
-
-    const handleScroll = () => {
-
-      if (window.scrollY > 200) {
-        setScroll(true)
-      }
-      else {
-        setScroll(false)
-      }
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setRole(decodedToken.role);
     }
-    window.addEventListener("scroll", handleScroll);
+  }, []);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+  // Navigation items
+  const navItems = useMemo(() => ["Home", "About Us", "Teams", "Gallery"], []);
+
+  // handleLogout ==============================================================================>
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.replace('/');
+  };
+
+  // handle Navigation Links ===================================================================>
+  const getNavLink = (item) => {
+    switch (item) {
+      case "Home":
+        return "/";
+      case "Dashboard":
+        return "dashboardPage";
+      case "About Us":
+        return "AboutUs";
+      default:
+        return item;
     }
-  }, [])
+  };
 
+  return (
+    <>
+      <NavModal />
 
-  return <>
+      <nav className={`${style.NavBar} fixed-top shadow`}>
+        <div className="myContainer d-flex justify-content-between align-items-center py-1">
+          {/* Logo */}
+          <Link className={style.logo} to="/">
+            <img className="w-90" src={logo} alt="Logo" />
+          </Link>
 
-    <NavModal />
+          {/* Navigation Items */}
+          <ul className={`${style.navUl} p-0 gap-5`}>
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <NavLink to={getNavLink(item)} className={({ isActive }) => (isActive ? style.activeLink : '')}>
+                  {item}
+                </NavLink>
+              </li>
+            ))}
 
-    <nav className={` ${style.NavBar} ${scroll && `${style.navBackground}`}   fixed-top shadow  `}>
+            {/* Show Dashboard only for admin or super roles */}
+            {role && (role === "admin" || role === "super") && (
+              <li>
+                <NavLink to={getNavLink("Dashboard")} className={({ isActive }) => (isActive ? style.activeLink : '')}>
+                  Dashboard
+                </NavLink>
+              </li>
+            )}
 
-      <div className="myContainer  d-flex justify-content-between align-items-center  py-1  ">
+            {/* Show Logout button if token is available */}
+            {role && (
+              <li>
+                <button onClick={handleLogout} className={style.logoutButton} aria-label="Logout">
+                  Logout
+                </button>
+              </li>
+            )}
+          </ul>
 
-        {/* logo==============================================================> */}
-        <Link className={`${style.logo}`} to="/">
-          <img className='w-90' src={logo} alt="Logo" />
-        </Link>
-
-        {/* navItem(ul)========================================================> */}
-        <ul className={`${style.navUl}   p-0  gap-5 `}>
-
-          {navItem.map((item, index) =>
-
-            <li key={index}>
-              <NavLink
-                to={`${item === 'Home' ? '/' : item === "Dashboard" ? "dashboardPage" : item}`}
-                className={({ isActive }) => (isActive ? `${style.activeLink}` : '')}
-              >
-                {item}
-              </NavLink>
-            </li>
-
-          )}
-
-        </ul>
-
-        <i data-bs-toggle="modal" data-bs-target="#exampleModal" className={`${style.menu} fa-solid  fa-bars `}></i>
-
-      </div>
-
-
-
-    </nav>
-
-
-
-
-
-  </>
+          {/* Mobile Menu Icon */}
+          <i data-bs-toggle="modal" data-bs-target="#exampleModal" className={`${style.menu} fa-solid fa-bars`} />
+        </div>
+      </nav>
+    </>
+  );
 }

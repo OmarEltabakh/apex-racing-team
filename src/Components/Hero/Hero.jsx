@@ -6,16 +6,17 @@ import { pVariants, spanVariants, motionSettings, transitions } from './HeroAnim
 import { useNavigate } from 'react-router-dom';
 
 
+const token = localStorage.getItem('token');
 
 export default function Hero() {
+
 
   // text Animation======================================================>
   const textAnimation = "Welcome to Apex";
 
+
   // hooks================================================================>
   const navigation = useNavigate();
-
-
 
 
   // handle navigation ===================================================>
@@ -25,19 +26,16 @@ export default function Hero() {
   }
 
 
-
-
-
   return <>
 
-    <section id='Home' className={`${style.Hero}  position-relative`}>
+    <section id='Home' className={`${style.Hero}  position-relative `}>
 
       <div className={`${style.layer} `} />
 
-      <div className={`${style.container} myContainer   h-100 `}>
+      <div className={`${style.container} myContainer  h-100   `}>
 
         {/* hero content=============================================================> */}
-        <div className={`${style.content}   `}>
+        <div className={`${style.content}`}>
 
           <motion.h1 variants={pVariants} initial="hidden" animate="visible" >
             {textAnimation.split("").map((letter, index) => {
@@ -50,7 +48,7 @@ export default function Hero() {
           <p className='w-95 '>We are an electric vehicle team founded in 2018 by students of the Higher Technological Institute, competing locally and internationally.</p>
 
           {/* sign in and sign up button================================================> */}
-          <div className={`${style.buttons}    `}>
+          {!token ? <div className={`${style.buttons}    `}>
             <motion.button onClick={() => handleNavigation("signIn")} {...motionSettings} transition={transitions.signIn} className={`${style.btn1}`}>
               Sign In
             </motion.button>
@@ -58,12 +56,12 @@ export default function Hero() {
             <motion.button onClick={() => handleNavigation("signUp")} {...motionSettings} transition={transitions.signUp} className={`${style.btn2}`}>
               Sign Up
             </motion.button>
-          </div>
+          </div> : ""}
 
         </div>
 
         {/* hero slider=================================================================> */}
-        <div className={`${style.sliderContainer}    d-flex justify-content-end`}>
+        <div className={`${style.sliderContainer}`}>
 
           <HeroSlider />
 

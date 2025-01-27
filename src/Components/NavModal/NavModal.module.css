@@ -8,7 +8,7 @@
 }
 
 .modalUl {
-    padding: 20px 0;
+    padding: 1.25rem 0;
 }
 
 .modalContainer h1 {
@@ -22,9 +22,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    margin-top: var(--margin-between-items);
     font-weight: 600;
+    
+}
 
+.logoutButton {
+    margin-top: var(--margin-between-items);
+    background-color: #ff5c5c;
+    color: #ffffff;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: .5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logoutButton:hover {
+    background-color: #d9534f;
+    box-shadow: 0 .25rem .375rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.logoutButton:active {
+    background-color: #c9302c;
+    transform: translateY(0);
 }
 
 .modalUl {

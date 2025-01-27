@@ -1,54 +1,43 @@
-import React, { useContext } from 'react'
-import style from "./HeroSlider.module.css"
-import car1 from "../../Assets/HomeSection/car1.png"
-import car2 from "../../Assets/HomeSection/car2.png"
-import car3 from "../../Assets/HomeSection/car3.png"
-import { gallaryContext } from '../../Context/GallaryContext'
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import React, { useContext, useMemo } from 'react';
+import Slider from "react-slick";
+import "./HeroSlider.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { galleryContext } from '../../Context/GalleryContext';
+import settings from "./SliderSetting.js";
 
 export default function HeroSlider() {
 
+  const { galleryData } = useContext(galleryContext);
+
+  const carsData = useMemo(() => {
+    return galleryData?.filter(item => item.category === 'cars') || [];
+  }, [galleryData]);
 
 
-  // get slider data=========================>
-  const { gallaryData, loading } = useContext(gallaryContext);
+  return (
+    <section className="heroSliderSection w-100">
+      <div className="heroSliderContainer myContainer">
 
-  const carsData = gallaryData?.data.map(item => {
-    if (item.category === 'cars') {
-      return item;
-    }
-    return null;
-  }).filter(item => item !== null);
-
-
-  
-
-  return <>
-
-    <div id="carouselExampleIndicators" className="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="2500">
-
-      <div className="carousel-indicators position-absolute top-100 ">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-
-      <div className="carousel-inner ">
-
-        {carsData?.map((item, index) =>
-          <div key={index} className="carousel-item active  ">
-            <img src={item.Image.secure_url} className="d-block w-90 m-auto " alt="formula" />
-          </div>
-
-        )}
-
+        <Slider {...settings}>
+          {carsData.length > 0 ? (
+            carsData.map((item, index) => (
+              <div key={item._id || index} className="heroSliderItem">
+                <img
+                  src={item.Image.secure_url}
+                  className="d-block w-100"
+                  alt={`Car image ${item?.title}`}
+                  loading="lazy"
+                />
+              </div>
+            ))
+          ) : (
+            <div>No cars available</div>
+          )}
+        </Slider>
 
       </div>
-
-    </div>
-
-
-
-
-
-  </>
+    </section>
+  );
 }

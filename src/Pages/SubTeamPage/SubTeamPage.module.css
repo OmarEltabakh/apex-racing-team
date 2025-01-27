@@ -1,0 +1,404 @@
+/* section 1 */
+.section1 {
+    background-color: var(--bgc1);
+    overflow: auto;
+
+}
+
+.section1Container {
+    display: flex;
+    margin-top: var(--spacing-top-section);
+    margin-bottom: var(--spacing-between-sections);
+}
+
+/* section1Content */
+.section1Content {
+    width: 50%;
+    position: relative;
+}
+
+.section1Content h2 {
+    color: var(--primaryColor);
+    font-size: var(--font-size-h2);
+    font-weight: 600;
+}
+
+.section1Content p {
+    color: var(--secondaryColor);
+    font-size: var(--font-size-p);
+    font-weight: 600;
+    margin-top: var(--margin-between-items) !important;
+    text-align: justify;
+    width: 95%;
+}
+
+.Section1VerticalLine {
+    position: absolute;
+    left: -5%;
+    width: .625rem;
+    height: 90%;
+    top: 5%;
+}
+
+/* section1Image */
+.section1Image {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.section1Image img {
+    box-shadow: .125rem .125rem .625rem 0px;
+    width: 100%;
+
+}
+
+
+
+
+/* section2 */
+.section2 {
+    background-color: var(--bgc1);
+    overflow: auto;
+
+}
+
+.section2Container {
+    margin-top: var(--spacing-between-sections);
+    margin-bottom: var(--spacing-between-sections);
+
+}
+
+.section2Container>h2 {
+    font-size: var(--font-size-h2);
+    font-weight: 600;
+    text-align: center;
+    color: var(--primaryColor);
+    margin-bottom: var(--section-title-space) !important;
+
+}
+
+.subteamContainer {
+    position: relative;
+    margin-top: var(--margin-between-items);
+
+}
+
+.Section2VerticalLine {
+    position: absolute;
+    width: .625rem;
+    height: 100%;
+    top: 0;
+    left: calc(50% - .3125rem);
+
+}
+
+
+.subTeamCardContainer {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+
+
+
+
+
+.circleContainerLeft {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-1.875rem);
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.circleContainerRight {
+    position: absolute;
+    right: 50%;
+    transform: translateX(1.875rem);
+    flex-direction: row-reverse;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.circleContainerLeft h6, .circleContainerRight h6 {
+    color: var(--primaryColor);
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+
+}
+
+.circle {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    background-color: var(--bgc2);
+
+}
+
+.triangleLeft {
+    width: 0;
+    height: 0;
+    border-left: .5rem solid transparent;
+    border-right: .5rem solid transparent;
+    border-bottom: .8625rem solid black;
+    transform: rotate(90deg);
+    position: absolute;
+    right: -0.875rem;
+    top: 1.5625rem;
+
+
+}
+
+.triangleRight {
+    width: 0;
+    height: 0;
+    border-left: .5rem solid transparent;
+    border-right: .5rem solid transparent;
+    border-top: .8625rem solid black;
+    transform: rotate(90deg);
+    position: absolute;
+    left: -0.875rem;
+    top: 1.5625rem;
+
+}
+
+.subTeamCard {
+    width: 45%;
+    box-shadow: .0625rem .0625rem .4375rem 0px;
+    background-color: white;
+    position: relative;
+    border-radius: .3125rem;
+
+
+}
+
+.subTeamCard img {
+    border-top-left-radius: .3125rem;
+    border-top-right-radius: .3125rem;
+}
+
+
+.layerContainer {
+    position: relative;
+}
+
+.layerContainer .layer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, #f5f5f5, #ffffff);
+    border-top-left-radius: .3125rem;
+    border-top-right-radius: .3125rem;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+}
+
+.layerContainer .layer:hover {
+    opacity: 1;
+}
+
+.layer>div {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+
+}
+
+.layer>div h6 {
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+    color: white;
+    cursor: pointer ;
+}
+
+/* subTeamPage responsive design */
+@media (max-width:1200px) {
+
+
+    /* section1 */
+    .section1Container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section1Content {
+        width: 90%;
+        text-align: center;
+
+    }
+
+    .section1Content p {
+        text-align: center;
+        width: 100%;
+    }
+
+
+    .section1Image {
+        width: 70%;
+        margin-top: var(--margin-between-items);
+    }
+
+
+
+    /* section2 */
+    .section2Container {
+        width: 70%;
+
+    }
+
+    .subTeamCard {
+        width: 90%;
+    }
+
+    .Section2VerticalLine {
+        left: 0;
+    }
+
+
+    .circleContainerRight {
+        right: 0;
+        left: 0;
+        transform: translateX(calc(-100% + 2.1875rem));
+
+
+    }
+
+    .circleContainerLeft {
+        left: 0%;
+        flex-direction: row-reverse;
+        transform: translateX(calc(-100% + 2.1875rem));
+        width: fit-content;
+
+    }
+
+
+
+
+
+    .triangleLeft {
+
+        transform: rotate(270deg);
+        left: -0.8125rem;
+
+    }
+
+    .triangleRight {
+
+        left: -0.8125rem;
+
+    }
+
+    .subTeamCardContainer {
+        display: flex;
+        justify-content: end !important;
+    }
+
+
+
+    .circle+h6 {
+        display: none;
+    }
+
+
+
+
+
+}
+
+
+
+@media (max-width:1000px) {
+
+    /* section1 */
+    .section1Image {
+        width: 80%;
+    }
+
+    /* section2 */
+    .section2Container {
+        width: 80%;
+    }
+
+
+
+}
+
+@media (max-width:800px) {
+
+
+
+    /* section1 */
+    .section1Content {
+        width: 100%;
+
+    }
+
+    .section1Image {
+        width: 90%;
+    }
+
+
+
+
+    /* section2 */
+    .section2Container {
+        width: 90%;
+
+    }
+
+
+
+
+
+
+}
+
+@media (max-width:600px) {
+
+    /* section1 */
+    .section1Image {
+        width: 100%;
+    }
+
+    .triangleLeft, .triangleRight {
+
+        left: -0.75rem;
+
+
+    }
+
+}
+
+
+@media (max-width:400px) {
+
+
+    .subTeamCard {
+        width: 87%;
+    }
+
+
+
+}
+
+@media (max-width:300px) {
+
+
+    .subTeamCard {
+        width: 85%;
+    }
+
+
+}

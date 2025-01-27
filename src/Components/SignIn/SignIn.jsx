@@ -44,7 +44,7 @@ export default function SignIn() {
       if (data) {
         localStorage.setItem('token', data.token);
         setSuccess('Sign in successful! Redirecting...');
-        setTimeout(() => navigate('/'), 2000);
+        window.location.replace('/'); // This will navigate to the home page
       }
     } catch (error) {
       setError(error.response?.data?.message || 'An error occurred. Please try again.');

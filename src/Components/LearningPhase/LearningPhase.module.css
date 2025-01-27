@@ -1,8 +1,8 @@
 .learningPhase {
     background-color: var(--bgc2);
     overflow: auto;
-    min-height: 100vh;
 }
+
 
 /* learningPhaseContainer */
 .learningPhaseContainer {
@@ -13,26 +13,78 @@
 }
 
 /* videoContainer */
-.videoContainer {
-    width: 65%;
+.firstVideo {
+    width: 69%;
     height: 31.25rem;
+}
+
+
+
+.videoList {
+    width: 30%;
+    height: 25rem;
+    overflow-y: auto;
+
+}
+
+.firstVideo {
     position: relative;
-}
-
-.videoContainer video {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    box-shadow: 1px 1px 10px 0px;
-    border-radius: 4px;
-
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
 }
 
-/* videoList */
-.videoListContainer {
-    width: 33%;
+.firstVideo iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 97%;
+    height: 70%;
 }
 
+
+
+.videoList ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.videoList li {
+    padding: .625rem;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    color: var(--secondaryColor);
+    font-size: var(--font-size-p);
+    font-weight: bold;
+}
+
+.videoList li:hover {
+    background-color: #f0f0f0;
+}
+
+.videoList .active {
+    font-weight: bold;
+    color: #007bff !important;
+}
+
+.authorizeationSection {
+    min-height: 100vh;
+    text-align: center;
+}
+
+.authorizeationText {
+    margin-top: var(--spacing-top-section) !important;
+    color: #d9534f;
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
 
 
 @media (max-width:1200px) {
@@ -41,36 +93,46 @@
         align-items: center;
     }
 
-    .videoContainer {
+    .firstVideo {
         width: 90%;
-        height: auto;
     }
 
-    .videoListContainer {
-        width: 90%;
-        margin-top: 3.75rem;
+    .videoList {
+        width: 70%;
+        margin-top: var(--margin-between-items);
     }
 
-    .learningPhase {
-        min-height: auto;
+    .firstVideo iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
+
 
 }
 
 @media (max-width:800px) {
-
-
-    .videoContainer {
+    .firstVideo {
         width: 100%;
     }
 
-    .videoListContainer {
+    .videoList {
+        width: 80%;
+    }
+}
+
+@media (max-width:600px) {
+
+    .videoList {
+        width: 90%;
+    }
+}
+
+@media (max-width:400px) {
+
+    .videoList {
         width: 100%;
-        margin-top: 60px;
     }
-
-    .learningPhase {
-        min-height: auto;
-    }
-
 }

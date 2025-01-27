@@ -4,7 +4,7 @@ nav {
 }
 
 .navUl li a {
-    font-size: 20px;
+    font-size: var(--font-size-p);
     color: var(--primaryColor) !important;
     font-weight: 600;
 }
@@ -20,13 +20,40 @@ nav {
 
 }
 
+.logoutButton {
+    background-color: #ff5c5c;
+    color: #ffffff;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: .5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
+.logoutButton:hover {
+    background-color: #d9534f;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.logoutButton:active {
+    background-color: #c9302c;
+    transform: translateY(0);
+}
 
 .menu {
     color: var(--primaryColor);
     display: none !important;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
+}
+
+
+.navUl {
+    display: flex;
+    align-items: center;
 }
 
 .navUl li a {

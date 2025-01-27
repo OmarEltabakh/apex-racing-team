@@ -17,11 +17,11 @@
     font-size: var(--font-size-h2);
     font-weight: 600;
     color: var(--primaryColor);
-    margin-bottom: var(--section-title-space) !important;
+    margin-bottom: var(--margin-between-items) !important;
 }
 
 .SignUpContent {
-    width: 70%;
+    width: 80%;
     padding: 2.5rem;
     border-radius: 5px;
     border: 2px solid #d4d5d6;
@@ -33,6 +33,11 @@
     width: 100%;
 }
 
+.signUpForm .rowContainer {
+    margin-bottom: var(--margin-between-items) !important;
+
+}
+
 .signUpForm label {
     font-size: var(--font-size-h6);
     font-weight: 600;
@@ -42,17 +47,15 @@
 
 .signUpForm input {
     width: 100%;
-    margin-bottom: var(--margin-between-items);
     padding: .5rem .3125rem;
     border-radius: 5px;
     border: solid 2px #e1e2e4 !important;
     background-color: var(--bgc2);
-
 }
 
 .signUpForm input:focus {
     outline: none !important;
-
+    box-shadow: none !important;
 }
 
 .signUpForm button {

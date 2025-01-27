@@ -1,16 +1,20 @@
 .ContactUs {
-    padding: 40px 0px;
-    padding-bottom: 80px;
     background-color: var(--bgc2);
 }
 
 .contactUsContainer {
+    margin-top: var(--spacing-between-sections);
+    margin-bottom: var(--spacing-between-sections);
+}
+
+.fromAndImageContainer {
     background-color: var(--bgc1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 60px;
-    padding: 80px 25px !important;
+    margin-top: var(--margin-between-items) !important;
+    border: 2px solid #dcdcdd;
+    padding: 5rem 1.5625rem !important;
 }
 
 /* formContainer================================================> */
@@ -18,9 +22,16 @@
     width: 50%;
 }
 
+.formContainer form {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--margin-between-items) !important;
+    width: 90%;
+}
+
 .formContainer form input,
 .formContainer form textarea {
-    font-size: 1.25rem;
+    font-size: var(--font-size-p);
     border: #e1e2e4 2px solid;
     box-shadow: none !important;
 
@@ -32,10 +43,11 @@
 }
 
 .formContainer form button {
-    font-size: 1.25rem;
+    width: 100%;
+    font-size: var(--font-size-h6);
     font-weight: 600;
     color: #B31010;
-    padding: 8px 2.375rem;
+    padding: .5rem 2.375rem;
     border-radius: .625rem;
     border: 2px solid #9C1510;
     background-color: var(--bgc2);
@@ -56,65 +68,85 @@
     width: 50%;
 }
 
-/* responsiveDesign=================================================> */
+/* success message animation========================================> */
+.successMessage {
+    color: #28a745;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: var(--font-size-h6);
+    animation: fadeInUp 1s ease-in-out;
+}
 
-@media (max-width:1200px) {
-    .formContainer {
-        width: 60%;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    .contactImage {
-        width: 40%;
-    }
-
-    .contactImage img {
-        width: 100% !important;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@media (max-width:1000px) {
-    .contactUsContainer {
+/* responsiveDesign=================================================> */
+
+@media (max-width:1200px) {
+
+    .fromAndImageContainer {
         flex-direction: column;
+
     }
 
     .formContainer {
-        display: flex;
-        justify-content: center;
-    }
-
-    .formContainer,
-    .contactImage {
         width: 90%;
+        margin-bottom: var(--margin-between-items);
     }
 
-    .contactImage img {
-        width: 70% !important;
+    .formContainer form {
+        width: 100%;
     }
 
     .contactImage {
-        margin-top: 60px;
+        width: 70%;
     }
+
+
+
+}
+
+@media (max-width:1000px) {
+
+
+    .contactImage {
+        width: 80%;
+    }
+
+
+
 }
 
 @media (max-width:800px) {
 
 
-    .formContainer,
-    .contactImage {
+
+    .formContainer {
         width: 100%;
     }
 
-    .formContainer form {
-        width: 100% !important;
+
+    .contactImage {
+        width: 90%;
     }
 
-    .contactImage img {
-        width: 70% !important;
-    }
 
-    .contactUsContainer {
-        padding: 80px 5px !important;
 
+}
+
+@media (max-width:600px) {
+
+    .contactImage {
+        width: 100%;
     }
 
 

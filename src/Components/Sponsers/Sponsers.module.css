@@ -1,52 +1,39 @@
-.Sponsers {
-    min-height: 50vh;
-    background-color: var(--bgc2);
+.sponsorsSection {
+  background-color: var(--bgc1);
+  overflow: auto;
+
 }
 
-.sponserContainer {
-    margin-top: 60px;
-    background-color: var(--bgc1);
-    padding: 80px 0px;
+
+.sponsorsContainer {
+  margin-top: var(--spacing-between-sections);
+  margin-bottom: var(--spacing-between-sections);
 }
 
-.innerCarousel {
-    display: flex;
+.sliderContainer {
+  margin-top: var(--margin-between-items);
 }
 
-.carousel {
-    overflow: hidden;
-    cursor: grab;
+
+.sponsorsContainer img {
+  height: 7.5rem;
+  cursor: grab;
 }
 
-.item img {
-    pointer-events: none;
+.sponsorsContainer img:active {
+  cursor: grabbing;
 }
 
-/* arrow left and right */
+@media(max-width:400px) {
 
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    z-index: 10;
+  .sponsorsContainer {
+    text-align: center;
+
   }
-  
-  .leftArrow {
-    left: 10px;
+
+  .sponsorsContainer img {
+    width: 85% !important;
   }
-  
-  .rightArrow {
-    right: 10px;
-  }
-  
-  .arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
+
+
+}

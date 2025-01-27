@@ -1,1 +1,138 @@
-.GalleryDashboard {}
+/* dashboardHeader */
+.GalleryDashboard {
+    border-radius: 5px;
+    background-color: var(--bgc2);
+    padding: 1.5625rem 1.25rem;
+    border: solid 2px #d4d5d6;
+}
+
+.dashboardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addNewImageButton {
+    background-color: #1d4ed8;
+    color: white;
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+    font-size: 1.125rem;
+
+
+}
+
+.titleCell, .categoryCell {
+    font-size: 1rem !important;
+    color: var(--secondaryColor);
+}
+
+.teamCell, .emailCell {
+    width: 400px !important;
+}
+
+.deleteButton, .updateButton {
+    font-size: .9375rem;
+    background-color: #e13647;
+    padding: .375rem .5rem;
+    border-radius: 3px;
+    color: white;
+    border: none;
+    margin-right: .3125rem;
+}
+
+.updateButton {
+    background-color: #1a8653;
+}
+
+.galleryImageContainer {
+    max-height: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+/* addGalleryImageComponent Styles */
+.dashboardHeader input {
+    padding: .5rem;
+    margin-bottom: var(--margin-between-items);
+    width: 18.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.dashboardHeader input:focus {
+    outline: none;
+}
+
+
+
+/* addImageForm */
+.addImageForm label {
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+    color: #595c5f;
+    margin-bottom: 10px;
+}
+
+
+.addImageForm input:focus , .addImageForm select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.addImageForm input , .addImageForm select {
+    padding: .5rem .3125rem;
+    border-radius: 5px;
+    border: solid 2px #e1e2e4 !important;
+    background-color: var(--bgc2);
+
+}
+
+.addImageForm .inputFiled input {
+    width: 100% !important;
+}
+
+.addImageForm .inputFiled input:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
+.modalHeader h1 {
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+    color: var(--primaryColor);
+
+
+}
+
+
+.addImageForm button {
+    width: 100%;
+    padding: .75rem .625rem;
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+    color: #9c1510;
+    border-radius: 5px;
+    background-color: var(--bgc2);
+    border: 2px solid #9c1510;
+    transition: .3s transform ease-in-out;
+}
+
+.addImageForm button:hover {
+    transform: translateY(-5%);
+}
+
+.modalDialog {
+    max-width: 900px !important;
+}
+
+.redStar {
+
+    color: red;
+}

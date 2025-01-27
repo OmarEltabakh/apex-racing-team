@@ -1,70 +1,47 @@
 import React from 'react';
-import style from "./AboutPage.module.css";
-import { motion } from 'framer-motion';
+import style from "./AboutPage.module.css"
+import aboutPageImage from "../../Assets/AboutPageImage/aboutPageImage.svg"
+export default function VisionAndMissionSection() {
 
 
-export const motionSettings = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true },
-    transition: { duration: 1, ease: "easeInOut" },
-};
 
-
-const VisionAndMissionSection = () => {
 
 
 
 
     return <>
 
-        <section className={`${style.visionAndMissionSection} overflow-hidden   `}>
-
-            <div className={`${style.visionAndMissionContainer} myContainer d-flex justify-content-between `}>
+        <section className={`${style.visionAndMissionSection} `}>
 
 
-                <motion.div
-                    {...motionSettings}
-                    initial={{ opacity: 0, x: -100 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    className={`${style.ourMission} rounded-2  shadow p-4 py-5 w-45 d-flex flex-column align-items-center`}>
+            <div className={`${style.visionAndMissionSectionContainer} myContainer `}>
 
-                    <h2>Our Mission</h2>
+                <div className={`${style.contentContainer} `}>
+                    <h2>
+                        Mission And Vision
+                    </h2>
 
-                    <p> VISION
-                        By supporting Egypt’s Vision 2030, Apex Racing team
-                        aim to make a change in the world by manufacturing
-                        safe, efficient and drivable urban electric vehicles
-                        that can replace petroleum ones, and to increase the
-                        awareness about the importance of using the green
-                        energy.</p>
-
-
-                </motion.div>
-
-                <motion.div
-                    {...motionSettings}
-                    initial={{ opacity: 0, x: 100 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    className={`${style.ourVision}  rounded-2 shadow p-4 py-5 w-45 d-flex flex-column align-items-center`}>
-
-                    <h2> Our Vision</h2>
-                    <p> VISION
-                        By supporting Egypt’s Vision 2030, Apex Racing team
-                        aim to make a change in the world by manufacturing
-                        safe, efficient and drivable urban electric vehicles
-                        that can replace petroleum ones, and to increase the
-                        awareness about the importance of using the green
-                        energy.
+                    <p>
+                        Apex Racing Team works to support Egypt’s Vision 2030 by building safe, efficient, and eco-friendly electric cars that can replace gasoline-powered vehicles. We also aim to spread awareness about the importance of using green energy.
+                    </p>
+                    <p>
+                        Apex Racing Team supports Egypt’s Vision 2030 by creating safe, efficient, and practical electric cars that can replace gasoline-powered vehicles. We also aim to raise awareness about the importance of using green energy.
                     </p>
 
-                </motion.div>
+                </div>
+
+
+                <div className={`${style.imageContainer} `}>
+                    <img src={aboutPageImage} alt="" />
+                </div>
+
 
             </div>
 
+
+
         </section>
+
 
     </>
 }
-
-export default VisionAndMissionSection

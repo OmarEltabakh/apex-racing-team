@@ -1,22 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Hero from '../../Components/Hero/Hero'
 import AboutSection from '../../Components/AboutSection/AboutSection';
-import CardsSection from '../../Components/CardsSection/CardsSection';
-import { competitionsData } from '../../DataAboutComponents/CompetitionsData';
 import Sponsers from '../../Components/Sponsers/Sponsers';
 import ContactUs from '../../Components/ContactUs/ContactUs';
-import NavBar from '../../Components/NavBar/NavBar';
+import Competitions from '../../Components/Competitions/Competitions';
+import { galleryContext } from '../../Context/GalleryContext';
+import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen';
+import ScrollToTop from '../../Components/ScrollToTop/ScrollToTop';
+
 
 const HomePage = () => {
 
-    return <>
+    const { isLoading } = useContext(galleryContext);
 
-        <NavBar />
-        <Hero />
-        <AboutSection />
-        <CardsSection data={competitionsData} sectionName="Competitions" imgWidth="w-85" navigation="CompetitionDetails" />
-        <Sponsers />
-        <ContactUs />
+
+    return <>
+        <ScrollToTop />
+        {isLoading ? <LoadingScreen /> :
+            <>
+                <Hero />
+                <AboutSection />
+                <Competitions />
+                <Sponsers />
+                <ContactUs />
+            </>
+
+        }
 
 
 

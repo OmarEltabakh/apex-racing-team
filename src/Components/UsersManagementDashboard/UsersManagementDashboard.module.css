@@ -20,18 +20,13 @@
     outline: none;
 }
 
-.cell, .teamCell, .emailCell {
-    font-size: 1rem !important;
+.cell, .teamCell, .emailCell, .SubTeamCell, .teamIdCell, .phoneCell {
+    font-size: .9375rem !important;
     color: var(--secondaryColor);
 }
 
-.teamCell, .emailCell {
-    width: 400px !important;
-}
 
-.buttons {
-    display: flex;
-}
+
 
 .deleteButton, .updateButton {
     font-size: .9375rem;

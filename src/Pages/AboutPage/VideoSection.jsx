@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import style from "./AboutPage.module.css";
 
 export default function VideoSection() {
+    
     const videoRef = useRef(null);
 
     const handleModalClose = () => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; } };
@@ -13,7 +14,7 @@ export default function VideoSection() {
                     <div className="modal-content bg-transparent border-0">
 
                         <div className="modal-body p-0 d-flex justify-content-center align-items-center  ">
-                            <div className={`${style.videoContainer} w-55 position-relative`}>
+                            <div className={`${style.videoContainer}  position-relative`}>
                                 <i data-bs-dismiss="modal" onClick={handleModalClose} aria-label="Close" className={`${style.closeButton} fa-solid fa-xmark`}></i>
                                 <video ref={videoRef} controls className={`w-100 `} poster="teamImage.webp">
                                     <source src="video.mp4" type="video/mp4" />

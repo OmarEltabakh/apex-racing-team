@@ -1,50 +1,51 @@
+import { useLocation } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
-import style from "./CompetitionDetails.module.css"
-import { useLocation } from 'react-router-dom';
+import style from "./CompetitionDetails.module.css";
+import CompetitionsDetailsData from "./CompetitionDetailsData";
 
 export default function CompetitionDetails() {
 
+
   const location = useLocation();
-  const { data, buttonId } = location.state;
+  const { competitionId } = location.state;
+
+
+  const competitionDetails = CompetitionsDetailsData.find(
+    (item) => item.id === competitionId
+  );
 
 
 
-  const competitionDetailsData = data.filter((item) => item.id === buttonId)[0];
-
-
-
-
-  return <>
-
-    <section className={`${style.CompetitionDetails}  d-flex align-items-center `}>
+  return (
+    <>
       <ScrollToTop />
-      <div className={`${style.CompetitionDetailsContainer} myContainer   `}>
+      <section className={`${style.CompetitionDetails} d-flex align-items-center`}>
+        <div className={`${style.CompetitionDetailsContainer} myContainer `}>
+          {competitionDetails ? (
+            <>
+              <div className={`${style.competitionDetailsContent} `}>
+                <h2>{competitionDetails.title}</h2>
+                <p className="w-90">{competitionDetails.description}</p>
+              </div>
 
-        <div className={`${style.competitionDetailsContent}`}>
-
-          <h2>{competitionDetailsData?.name}</h2>
-
-          <p className="w-90">
-            {competitionDetailsData?.DescriptionInDepth}
-          </p>
-
+              <div
+                className={`${style.cometitionDetailsImage}  d-flex align-items-center justify-content-center`}
+              >
+                {competitionDetails.img && (
+                  <img
+                    className="w-100"
+                    src={competitionDetails.img}
+                    alt={competitionDetails.title}
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            </>
+          ) : (
+            <p>Competition details not found.</p>
+          )}
         </div>
-
-        <div className={`${style.cometitionDetailsImage}  d-flex align-items-center justify-content-center`}>
-
-          <img className="w-100" src={`${competitionDetailsData?.carImage}`} alt="" />
-
-        </div>
-
-
-      </div>
-
-
-    </section>
-
-
-
-
-
-  </>
+      </section>
+    </>
+  );
 }
