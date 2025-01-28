@@ -55,7 +55,7 @@ export default function GalleryPage() {
 
     return (
         <>
-            <section className={`${style.galleryPage} greenborder`}>
+            <section className={`${style.galleryPage} `}>
 
                 <div className={`${style.galleryPageContainer} myContainer     `}>
 
@@ -86,7 +86,7 @@ export default function GalleryPage() {
                     {isLoading ? <LoadingScreen /> :
                         <>
                             {currentCategory !== "cars" &&
-                                <div className={`${style.galleryImages} w-100  `}>
+                                <div className={`${style.galleryImages} w-100   `}>
                                     {filteredData?.length > 0 ? (
                                         filteredData?.map((item, index) => <div key={index}>
 
