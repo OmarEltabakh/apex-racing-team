@@ -55,9 +55,9 @@ export default function GalleryPage() {
 
     return (
         <>
-            <section className={`${style.galleryPage} `}>
+            <section className={`${style.galleryPage} greenborder`}>
 
-                <div className={`${style.galleryPageContainer} myContainer   `}>
+                <div className={`${style.galleryPageContainer} myContainer     `}>
 
 
                     <div style={{ left: sideBarToggle }} className={`${style.gallerySideBar}  `}>
