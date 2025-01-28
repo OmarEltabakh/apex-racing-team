@@ -47,7 +47,7 @@ nav {
     color: var(--primaryColor);
     display: none !important;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 
@@ -100,5 +100,15 @@ nav {
     .logo img {
         width: 75%;
     }
+
+
+
+}
+
+@media (max-width:400px) {
+    .navBarContainer {
+        width: 95% !important;
+    }
+
 
 }

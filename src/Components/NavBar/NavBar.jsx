@@ -45,7 +45,7 @@ export default function NavBar() {
       <NavModal />
 
       <nav className={`${style.NavBar} fixed-top shadow`}>
-        <div className="myContainer d-flex justify-content-between align-items-center py-1">
+        <div className={`${style.navBarContainer} myContainer d-flex justify-content-between align-items-center py-1`}>
           {/* Logo */}
           <Link className={style.logo} to="/">
             <img className="w-90" src={logo} alt="Logo" />
