@@ -107,7 +107,7 @@ export default function SubTeamPage() {
                       <div className={`${index % 2 === 0 ? style.triangleLeft : style.triangleRight}`} />
                       <div className={`${style.layerContainer}`}>
                         <div className={`${style.layer} d-flex justify-content-center align-items-center`}>
-                          <div className="px-3">
+                          <div className="px-3 ">
                             <h6
                               onClick={() => {
                                 if (token) {
