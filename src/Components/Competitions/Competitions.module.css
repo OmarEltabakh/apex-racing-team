@@ -1,5 +1,6 @@
 .competitionsSection {
     background-color: var(--bgc2);
+    overflow: hidden;
 }
 
 .competitionsContainer {

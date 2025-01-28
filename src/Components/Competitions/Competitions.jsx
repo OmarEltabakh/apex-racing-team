@@ -29,7 +29,7 @@ export default function Competitions() {
 
     return <>
 
-        <section className={`${style.competitionsSection} d-flex justify-content-center align-items-center overflow-hidden`}>
+        <section className={`${style.competitionsSection}`}>
 
 
             <div className={`${style.competitionsContainer} myContainer    `}>

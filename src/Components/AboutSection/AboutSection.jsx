@@ -32,7 +32,7 @@ export default function AboutSection() {
 
   return <>
 
-    <section id='AboutUs' className={`${style.AboutSection}  d-flex align-item-center  overflow-hidden `}>
+    <section id='AboutUs' className={`${style.AboutSection}  d-flex align-item-center  `}>
 
 
       <div className={`${style.container} myContainer  `}>

@@ -1,5 +1,6 @@
 .ContactUs {
     background-color: var(--bgc2);
+    overflow: hidden;
 }
 
 .contactUsContainer {

@@ -29,7 +29,7 @@ export default function ContactUs() {
 
 
       {/* contactUsContainer */}
-      <div className={`${style.contactUsContainer} myContainer`}>
+      <div className={`${style.contactUsContainer} myContainer `}>
 
         <SectionTitle title="ContactUs" />
 

@@ -28,7 +28,7 @@ export default function Hero() {
 
   return <>
 
-    <section id='Home' className={`${style.Hero}  position-relative `}>
+    <section id='Home' className={`${style.Hero}  position-relative  `}>
 
       <div className={`${style.layer} `} />
 

@@ -1,5 +1,6 @@
 .AboutSection {
     background-color: var(--bgc1);
+    overflow: hidden;
 }
 
 .container {
