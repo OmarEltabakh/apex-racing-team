@@ -48,7 +48,7 @@
 }
 
 .galleryImageContainer {
-    max-height: 3.125rem;
+    max-height: 50px;
     overflow: hidden;
     display: flex;
     align-items: center;
