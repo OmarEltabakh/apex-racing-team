@@ -6,26 +6,27 @@ import { useQuery } from 'react-query';
 import style from './LearningPhaseDashboard.module.css';
 import { teamsContext } from '../../Context/TeamsContext';
 
-const menuCategories = ['Educational'];
+const menuCategories = ['Educational']; // Define available video types
 
 // Fetch sub-teams data by team ID
 const fetchSubTeamsByTeamId = async (teamId) => {
-  if (!teamId) return [];
+  if (!teamId) return []; // Return empty array if no teamId is provided
   try {
     const { data } = await axios.get(`https://apexracingteam-eg.onrender.com/subteams/teams/${teamId}`);
-    return data?.data || [];
+    return data?.data || []; // Return sub-teams data or empty array
   } catch (error) {
     throw new Error(error.response?.data?.message || 'Failed to fetch sub-teams data');
   }
 };
 
 export default function AddVideo({ refetch }) {
-  const { teamsData } = useContext(teamsContext);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [selectedTeamId, setSelectedTeamId] = useState(null);
-  const token = `accesstoken_${localStorage.getItem('token')}`;
+  // Context and state management
+  const { teamsData } = useContext(teamsContext); // Access teams data from context
+  const [isSubmitting, setIsSubmitting] = useState(false); // Loading state for form submission
+  const [successMessage, setSuccessMessage] = useState(''); // Success message state
+  const [errorMessage, setErrorMessage] = useState(''); // Error message state
+  const [selectedTeamId, setSelectedTeamId] = useState(null); // Track selected team ID
+  const token = `accesstoken_${localStorage.getItem('token')}`; // Get token from localStorage
 
   // Fetch sub-teams data based on selected team
   const { data: subTeamsData } = useQuery(
@@ -33,15 +34,15 @@ export default function AddVideo({ refetch }) {
     () => fetchSubTeamsByTeamId(selectedTeamId),
     {
       enabled: !!selectedTeamId, // Only fetch if selectedTeamId is set
-      staleTime: Infinity,
-      cacheTime: 3600000,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      refetchInterval: false,
+      staleTime: Infinity, // Cache data indefinitely
+      cacheTime: 3600000, // Cache time in milliseconds
+      refetchOnWindowFocus: false, // Disable refetch on window focus
+      refetchOnReconnect: false, // Disable refetch on reconnect
+      refetchInterval: false, // Disable refetch intervals
     }
   );
 
-  // Validation schema
+  // Validation schema using Yup
   const validationSchema = Yup.object({
     title: Yup.string().required('Title is required'),
     vidType: Yup.string().required('Video type is required'),
@@ -51,7 +52,7 @@ export default function AddVideo({ refetch }) {
     subTeam: Yup.string().required('Sub-Team is required'),
   });
 
-  // Handle form submission
+  // Formik form configuration
   const formik = useFormik({
     initialValues: {
       title: '',
@@ -63,24 +64,24 @@ export default function AddVideo({ refetch }) {
     },
     validationSchema,
     onSubmit: useCallback(async (values, { resetForm }) => {
+      setIsSubmitting(true); // Set loading state
+      setSuccessMessage(''); // Clear previous success message
+      setErrorMessage(''); // Clear previous error message
 
-      setIsSubmitting(true);
-      setSuccessMessage('');
-      setErrorMessage('');
+      // Find the selected sub-team
+      const matchedSubTeam = subTeamsData?.find((team) => team.title === values.subTeam);
 
-      const matchedSubTeam = subTeamsData?.find(
-        (team) => team.title === values.subTeam
-      );
-
+      // Validate sub-team selection
       if (!matchedSubTeam) {
         setErrorMessage('Invalid sub-team selected.');
         setIsSubmitting(false);
         return;
       }
 
-      const subteamId = matchedSubTeam._id;
+      const subteamId = matchedSubTeam._id; // Extract sub-team ID
 
       try {
+        // Send POST request to add video
         const response = await axios.post(
           'https://apexracingteam-eg.onrender.com/admins/add-video',
           {
@@ -92,44 +93,66 @@ export default function AddVideo({ refetch }) {
             teamId: selectedTeamId,
           },
           {
-            headers: { token },
+            headers: { token }, // Include authorization token
           }
         );
 
+        // Handle success
         setSuccessMessage(response.data.message || 'Video added successfully!');
-        refetch()
-        resetForm();
+        refetch(); // Refetch data to update the UI
+        resetForm(); // Reset form fields
       } catch (error) {
+        // Handle error
         setErrorMessage(error.response?.data?.message || 'Failed to add video. Please try again.');
       } finally {
-        setIsSubmitting(false);
+        setIsSubmitting(false); // Reset loading state
       }
-    }, [subTeamsData, token, selectedTeamId]),
+    }, [subTeamsData, token, selectedTeamId, refetch]), // Dependencies for useCallback
   });
 
-  // Handle team change
+  // Handle team selection change
   const handleTeamChange = (e) => {
     const selectedTeam = teamsData?.find((team) => team.title === e.target.value);
     if (selectedTeam) {
-      setSelectedTeamId(selectedTeam._id);
+      setSelectedTeamId(selectedTeam._id); // Update selected team ID
     }
-    formik.handleChange(e);
+    formik.handleChange(e); // Update formik values
   };
 
+  // Memoize sub-teams data to optimize performance
   const memoizedSubTeamsData = useMemo(() => subTeamsData, [subTeamsData]);
 
   return (
-    <div className={`${style.addVideoModal} modal fade w-100`} id="modal3" tabIndex="-1" aria-labelledby="modal3Label" aria-hidden="true">
+    <div
+      className={`${style.addVideoModal} modal fade w-100`}
+      id="modal3"
+      tabIndex="-1"
+      aria-labelledby="modal3Label"
+      aria-hidden="true" // Ensure this is managed properly by Bootstrap
+    >
       <div className={`${style.modalDialog} modal-dialog`}>
         <div className="modal-content">
+          {/* Modal Header */}
           <div className={`${style.modalHeader} modal-header`}>
-            <h1 className="modal-title fs-5" id="modal3Label">Add New Video</h1>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h1 className="modal-title fs-5" id="modal3Label">
+              Add New Video
+            </h1>
+            {/* Close Button */}
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              // Ensure no aria-hidden is applied here
+            ></button>
           </div>
+
+          {/* Modal Body */}
           <div className="modal-body">
             <form onSubmit={formik.handleSubmit} className={style.addVideoForm}>
               <div className={style.inputFiled}>
-                <div className='d-flex mb-3'>
+                {/* Video Type and Title Fields */}
+                <div className="d-flex mb-3">
                   <div className="w-100 me-3">
                     <label htmlFor="vidType">
                       <span className={`${style.redStar} me-1`}>*</span>Video Type:
@@ -153,7 +176,7 @@ export default function AddVideo({ refetch }) {
                       <div className="alert alert-danger py-1 mt-1">{formik.errors.vidType}</div>
                     )}
                   </div>
-                  <div className="w-100 ">
+                  <div className="w-100">
                     <label htmlFor="title">
                       <span className={`${style.redStar} me-1`}>*</span>Title:
                     </label>
@@ -172,7 +195,8 @@ export default function AddVideo({ refetch }) {
                   </div>
                 </div>
 
-                <div className='d-flex'>
+                {/* Description and URL Fields */}
+                <div className="d-flex">
                   <div className="mb-3 w-100 me-3">
                     <label htmlFor="description">
                       <span className={`${style.redStar} me-1`}>*</span>Description:
@@ -210,7 +234,8 @@ export default function AddVideo({ refetch }) {
                   </div>
                 </div>
 
-                <div className='d-flex'>
+                {/* Team and Sub-Team Fields */}
+                <div className="d-flex">
                   <div className="mb-3 w-100 me-3">
                     <label htmlFor="team">
                       <span className={`${style.redStar} me-1`}>*</span>Team:
@@ -246,7 +271,7 @@ export default function AddVideo({ refetch }) {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       className={`form-select ${formik.touched.subTeam && formik.errors.subTeam ? 'is-invalid' : ''}`}
-                      disabled={!selectedTeamId}
+                      disabled={!selectedTeamId} // Disable if no team is selected
                     >
                       <option value="">Select a sub-team</option>
                       {memoizedSubTeamsData?.map((team) => (
@@ -262,10 +287,13 @@ export default function AddVideo({ refetch }) {
                 </div>
               </div>
 
+              {/* Success and Error Messages */}
               {successMessage && <div className="alert alert-success py-2 mt-2">{successMessage}</div>}
               {errorMessage && <div className="alert alert-danger py-2 mt-2">{errorMessage}</div>}
 
-              <button type="submit"
+              {/* Submit Button */}
+              <button
+                type="submit"
                 disabled={!(formik.dirty && formik.isValid) || isSubmitting}
                 className={`${isSubmitting ? style.isSubmittingStyle : ''}`}
               >
