@@ -6,48 +6,69 @@ import { galleryColumns } from './GalleryColumns';
 import axios from 'axios';
 import UpdateGalleryImage from './UpdateGalleryImage';
 import { galleryContext } from '../../Context/GalleryContext';
-
-
+import { ToastContainer, toast } from 'react-toastify'; // Import ToastContainer and toast
+import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for styling
+import Swal from 'sweetalert2'; // Import SweetAlert2
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
 
 // Secure token
 const token = `accesstoken_${localStorage.getItem('token')}`;
 
-
-
 export default function GalleryDashboard() {
+  const { galleryData, isLoading, error, refetch } = useContext(galleryContext);
 
-
-  const { galleryData, isLoading, error } = useContext(galleryContext);
-
-
-
-  // State management=======================================================>
+  // State management
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedItemId, setSelectedItemId] = useState(null);
 
-
-
-
-  // Delete Gallery Item====================================================>
+  // Delete Gallery Item
   const deleteGalleryItem = async (id) => {
     console.log(id);
 
-    const confirmDelete = window.confirm('Are you sure you want to delete this image?');
-    if (!confirmDelete) return;
+    // Show a confirmation dialog using SweetAlert2
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to delete this image. This action cannot be undone!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel',
+    });
 
-    try {
-      await axios.delete(`https://apexracingteam-eg.onrender.com/gallery/delete-gallery-item/${id}`, {
-        headers: { token },
-      });
-      alert('Gallery item deleted successfully.');
-    } catch (error) {
-      console.error('Error deleting item:', error.message);
-      alert('Failed to delete item.');
+    // If the user confirms, proceed with deletion
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`https://apexracingteam-eg.onrender.com/gallery/delete-gallery-item/${id}`, {
+          headers: { token },
+        });
+        // Show success toast
+        toast.success('Gallery item deleted successfully.', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        refetch(); // Refetch data after deletion
+      } catch (error) {
+        console.error('Error deleting item:', error.message);
+        // Show error toast
+        toast.error('Failed to delete item.', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
     }
   };
 
-
-  // Filtered data based on search query and search=========================>
+  // Filtered data based on search query
   const filteredData = useMemo(() => {
     return galleryData?.filter((item) => {
       const title = item.title || '';
@@ -59,9 +80,7 @@ export default function GalleryDashboard() {
     });
   }, [galleryData, searchQuery]);
 
-
-
-  // Custom styles for DataTable===========================================>
+  // Custom styles for DataTable
   const customStyles = {
     headRow: {
       style: {
@@ -74,45 +93,49 @@ export default function GalleryDashboard() {
 
   return (
     <>
-      <AddGalleryImage />
+      <ToastContainer />
 
-      <UpdateGalleryImage galleryItemId={selectedItemId} galleryData={galleryData} />
+      <AddGalleryImage refetch={refetch} />
 
-      <section className={`${style.GalleryDashboard} shadow-lg`}>
-        <div className={`${style.dashboardHeader}`}>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className={style.searchInput}
-          />
-          <button
-            data-bs-toggle="modal"
-            data-bs-target="#modal1"
-            className={`${style.addNewImageButton}`}
-          >
-            <i className="fa-solid fa-plus pe-2"></i>
-            Add New Image
-          </button>
-        </div>
+      <UpdateGalleryImage refetch={refetch} galleryItemId={selectedItemId} galleryData={galleryData} />
 
-        {isLoading ? (
-          <p>Loading gallery items...</p>
-        ) : error ? (
-          <p className={style.errorText}>{error.message || 'Failed to fetch gallery data.'}</p>
-        ) : (
-          <DataTable
-            className={`${style.dataTable}`}
-            columns={galleryColumns({ deleteGalleryItem, setSelectedItemId })}
-            data={filteredData}
-            pagination
-            highlightOnHover
-            customStyles={customStyles}
-          />
-        )}
-      </section>
+      {isLoading ? <LoadingScreen /> :
 
+        <section className={`${style.GalleryDashboard} shadow-lg`}>
+          <div className={`${style.dashboardHeader}  `}>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={style.searchInput}
+            />
+            <button
+              data-bs-toggle="modal"
+              data-bs-target="#modal1"
+              className={`${style.addNewImageButton}`}
+            >
+              <i className="fa-solid fa-plus pe-2"></i>
+              Add New Image
+            </button>
+          </div>
+
+          {isLoading ? (
+            <p>Loading gallery items...</p>
+          ) : error ? (
+            <p className={style.errorText}>{error.message || 'Failed to fetch gallery data.'}</p>
+          ) : (
+            <DataTable
+              className={`${style.dataTable}`}
+              columns={galleryColumns({ deleteGalleryItem, setSelectedItemId })}
+              data={filteredData}
+              pagination
+              highlightOnHover
+              customStyles={customStyles}
+            />
+          )}
+        </section>
+      }
     </>
   );
 }

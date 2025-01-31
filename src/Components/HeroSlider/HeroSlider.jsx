@@ -16,6 +16,7 @@ export default function HeroSlider() {
   }, [galleryData]);
 
 
+  
   return (
     <section className="heroSliderSection w-100">
       <div className="heroSliderContainer myContainer">

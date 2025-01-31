@@ -1,12 +1,7 @@
 
 
 import { NextArrow, PrevArrow } from "../Memebers/CustomArrows";
-import logo1 from "../../Assets/SponsersLogo/logo1.webp"
-import logo2 from "../../Assets/SponsersLogo/logo2.webp"
-import logo3 from "../../Assets/SponsersLogo/logo3.webp"
-import logo4 from "../../Assets/SponsersLogo/logo4.webp"
 
-export const sponsorsLogos = [logo1, logo2, logo3, logo4]
 
 export const settings = {
     dots: true,

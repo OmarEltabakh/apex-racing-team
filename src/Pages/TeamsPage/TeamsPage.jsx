@@ -12,6 +12,7 @@ export default function TeamsPage() {
 
   const { isLoading, teamsData } = useContext(teamsContext);
 
+
   // state management=================================================>
   const navigate = useNavigate();
 
@@ -37,7 +38,7 @@ export default function TeamsPage() {
               <div key={team._id} className="col-8 col-xl-3 col-lg-4 col-md-5 col-sm-6">
                 <div className={`${style.card} shadow w-100 p-2 rounded-1 py-3 cursorPointer`}>
                   <div className="d-flex justify-content-center">
-                    <img className='w-90  ' src={team.images[0]?.secure_url} alt={`Image of ${team.name}`} loading="lazy" />
+                    <img className='w-90  ' src={team.teamLogo?.secure_url} alt={`Image of ${team.name}`} loading="lazy" />
                   </div>
                   <p>
                     {team.description}

@@ -29,6 +29,7 @@ const TeamsContextProvider = (props) => {
 
 
 
+
     return (
         <teamsContext.Provider value={{ teamsData, isLoading, error }}>
             {props.children}

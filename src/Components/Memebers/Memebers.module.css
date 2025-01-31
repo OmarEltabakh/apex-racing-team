@@ -33,7 +33,7 @@
 .memberImage {
     height: 21.875rem;
     overflow: hidden;
-    
+
 }
 
 .memberImage img {
@@ -68,8 +68,32 @@
 
 }
 
-.memberAccount i {
+.memberAccount .linkedInLogo {
     cursor: pointer;
+    color: #0077b5;
+    transition: .3s all ease-in-out;
+}
+
+.memberAccount .linkedInLogo:hover:hover {
+    cursor: pointer;
+    color: #005582;
+
+
+}
+
+.memberAccount .githubLogo {
+    cursor: pointer;
+    color: #24292e;
+    transition: .3s all ease-in-out;
+
+
+}
+
+.memberAccount .githubLogo:hover:hover {
+    cursor: pointer;
+    color: #6e5494;
+
+
 }
 
 .customArrow {
@@ -137,6 +161,7 @@
 
 
 }
+
 @media (max-width:400px) {
     .memberCardWrapper {
         width: 90%;
@@ -145,6 +170,7 @@
 
 
 }
+
 @media (max-width:400px) {
     .memberCardWrapper {
         width: 90%;
@@ -153,6 +179,7 @@
 
 
 }
+
 @media (max-width:300px) {
     .memberCardWrapper {
         width: 100%;

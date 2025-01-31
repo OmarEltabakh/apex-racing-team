@@ -21,7 +21,7 @@ const GalleryContextProvider = (props) => {
 
 
     // handle gallery data useing useQuery==============================>
-    const { data, isLoading, error } = useQuery('gallery', fetchGalleryData, {
+    const { data, isLoading, error, refetch } = useQuery('gallery', fetchGalleryData, {
         staleTime: Infinity, // Keep data fresh
         cacheTime: Infinity,   // Cache for 1 hour
         refetchOnWindowFocus: false,
@@ -29,8 +29,10 @@ const GalleryContextProvider = (props) => {
         refetchInterval: false,
     });
 
+
+
     return (
-        <galleryContext.Provider value={{ galleryData: data?.data, isLoading, error }}>
+        <galleryContext.Provider value={{ galleryData: data?.data, isLoading, error, refetch }}>
             {props.children}
         </galleryContext.Provider>
     );

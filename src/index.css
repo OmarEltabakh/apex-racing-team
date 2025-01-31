@@ -21,13 +21,16 @@
 
     /* margin */
     --margin-between-items: 1.25rem;
-    --spacing-top-section: 10.625rem; /* for section just contain an navbar above*/
+    --spacing-top-section: 10.625rem;
+    /* for section just contain an navbar above*/
     --spacing-between-sections: 5.3125rem;
 }
 
-button:disabled{
-    opacity: .4;
-    cursor: not-allowed;
+.isSubmittingStyle {
+
+    opacity: .4 !important;
+    cursor: not-allowed !important;
+
 }
 
 p,
@@ -109,9 +112,9 @@ a {
 .cursorPointer {
     cursor: pointer;
 }
-.ytp-cued-thumbnail-overlay-image{
-    height: 500px !important;
-}
+
+
+
 
 /* responsive design=======================================> */
 @media(max-width:651px) {

@@ -41,7 +41,7 @@ export const columns = ({ deleteMember }) => [
     sortable: true,
     cell: (row) => (
       <span className={style.teamCell}>
-        {row.teamId?.title}
+        {row.teamId?.title || "_"}
       </span>
     ),
   },
@@ -51,7 +51,7 @@ export const columns = ({ deleteMember }) => [
     sortable: true,
     cell: (row) => (
       <span className={style.SubTeamCell}>
-        {row.subTeamId?.title}
+        {row.subTeamId?.title || "_"}
       </span>
     ),
   },

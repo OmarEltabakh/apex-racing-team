@@ -4,11 +4,12 @@ import style from "./SideBarDashboard.module.css";
 
 export default function SideBarDashboard() {
 
-  const [sideBarToggle, setSideBarToggle] = useState('-20rem');
+  const [sideBarToggle, setSideBarToggle] = useState('-17.5rem');
   const [isHovered, setIsHovered] = useState(false);
 
+  const [isActive, setIsActive] = useState('Users Management');
   const toggleSideBar = () => {
-    setSideBarToggle((prev) => (prev === '0' ? '-20rem' : '0'));
+    setSideBarToggle((prev) => (prev === '0' ? '-17.5rem' : '0'));
   };
 
   const handleMouseEnter = () => {
@@ -38,10 +39,12 @@ export default function SideBarDashboard() {
       </div>
       <ul className={`${style.sideBarMenu}`}>
         {menuItems.map(item => (
-          <li key={item.id}>
-            <i className={`fa-solid ${item.icon}`}></i>
-            <Link to={item.path}>{item.text}</Link>
-          </li>
+          <Link key={item.id} to={item.path}>
+            <li onClick={() => setIsActive(item.text)} key={item.id} className={`${item.text === isActive && `${style.active}`} `}>
+              <i className={`fa-solid ${item.icon} me-2`}></i>
+              {item.text}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

@@ -1,65 +1,95 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { useQuery } from 'react-query';
-import style from './LearningPhaseDashboard.module.css';
-import DataTable from 'react-data-table-component';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import Swal from 'sweetalert2';
+import { jwtDecode } from 'jwt-decode';
+import DataTable from 'react-data-table-component';
+import style from './LearningPhaseDashboard.module.css';
+import 'react-toastify/dist/ReactToastify.css';
 
-import columns from "./learningPhaseColumns"
+import columns from './learningPhaseColumns';
 import AddVideo from './AddVideo';
-const token = `accesstoken_${localStorage.getItem('token')}`;
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const fetchVideos = async () => {
+
+  const token = localStorage.getItem('token');
+  if (!token) throw new Error('No token found');
+
   const { data } = await axios.get('https://apexracingteam-eg.onrender.com/videos/educational', {
-    headers: { token },
+    headers: { token: `accesstoken_${token}` },
   });
   return data;
 };
 
+
 export default function LearningPhaseDashboard() {
-
-
   const [searchQuery, setSearchQuery] = useState('');
+  const [showingVideos, setShowingVideos] = useState([]);
 
   const { data: videosData, isLoading, error, refetch } = useQuery('videos', fetchVideos, {
-    staleTime: Infinity,
-    cacheTime: 3600000,
+    staleTime: 60000, // 1 minute
+    cacheTime: 3600000, // 1 hour
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
     refetchInterval: false,
   });
 
-  console.log(videosData);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
 
 
-  const deleteVideo = async (id) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this video?');
-    if (!confirmDelete) return;
+      const decodedToken = jwtDecode(token);
+      if (decodedToken.role === "super") {
+        setShowingVideos(videosData);
+      } else {
 
-    try {
-      await axios.delete(
-        `https://apexracingteam-eg.onrender.com/admins/delete-video/${id}`,
-        { headers: { token } }
-      );
-      alert('Video deleted successfully.');
-      refetch(); // Refresh the video list
-    } catch (err) {
-      console.error('Error deleting video:', err.message);
-      alert('Failed to delete video.');
+        const filteredVideos = videosData?.filter((video) => video.subteamId._id === decodedToken.subTeam);
+        setShowingVideos(filteredVideos);
+
+      }
+
+
     }
-  };
+  }, [videosData]);
 
-  const filteredData = React.useMemo(() => {
-    return videosData?.filter((row) => {
+  const deleteVideo = useCallback(async (id) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to delete this video. This action cannot be undone!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    });
+
+    if (result.isConfirmed) {
+      try {
+        const token = localStorage.getItem('token');
+        await axios.delete(`https://apexracingteam-eg.onrender.com/admins/delete-video/${id}`, {
+          headers: { token: `accesstoken_${token}` },
+        });
+        toast.success('Video deleted successfully!');
+        refetch();
+      } catch (err) {
+        console.error('Error deleting video:', err.message);
+        toast.error('Failed to delete video.');
+      }
+    }
+  }, [refetch]);
+
+  const filteredData = useMemo(() => {
+    return showingVideos?.filter((row) => {
       return (
         row.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         row.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     });
-  }, [videosData, searchQuery]);
-
-
-
-
+  }, [showingVideos, searchQuery]);
 
   const customStyles = {
     headRow: {
@@ -71,43 +101,62 @@ export default function LearningPhaseDashboard() {
     },
   };
 
+  const handleSearchChange = useCallback((e) => {
+    setSearchQuery(e.target.value);
+  }, []);
+
   return (
-
-    <section className={style.LearningPhaseDashboard}>
-
-      <AddVideo />
-      <div className={`${style.learningPhaseDashboardHeader} d-flex justify-content-between align-items-center `}>
-        <input
-          type="text"
-          placeholder="Search videos..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className={style.searchInput}
-        />
-        <button
-          data-bs-toggle="modal"
-          data-bs-target="#modal3"
-          className={`${style.addVideoButton}`}
-        >
-          <i className="fa-solid fa-user-plus pe-2"></i>
-          Add video
-        </button>
-
-      </div>
+    <>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       {isLoading ? (
-        <p>Loading videos...</p>
-      ) : error ? (
-        <p>Error loading videos: {error.message}</p>
+        <LoadingScreen />
       ) : (
-        <DataTable
-          columns={columns({ deleteVideo })}
-          data={filteredData}
-          pagination
-          highlightOnHover
-          customStyles={customStyles}
-        />
+        <section className={style.LearningPhaseDashboard}>
+          <ScrollToTop />
+          <AddVideo refetch = {refetch} />
+
+          <div className={`${style.learningPhaseDashboardHeader} d-flex justify-content-between align-items-center`}>
+            <input
+              type="text"
+              placeholder="Search videos..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className={style.searchInput}
+            />
+            <button
+              data-bs-toggle="modal"
+              data-bs-target="#modal3"
+              className={`${style.addVideoButton}`}
+            >
+              <i className="fa-solid fa-user-plus pe-2"></i>
+              Add video
+            </button>
+          </div>
+
+          {error ? (
+            <p>Error loading videos: {error.message}</p>
+          ) : (
+            <DataTable
+              columns={columns({ deleteVideo })}
+              data={filteredData}
+              pagination
+              highlightOnHover
+              customStyles={customStyles}
+            />
+          )}
+        </section>
       )}
-    </section>
+    </>
   );
 }

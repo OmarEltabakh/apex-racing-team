@@ -45,7 +45,7 @@ export default function Hero() {
             })}
           </motion.h1>
 
-          <p className='w-95 '>We are an electric vehicle team founded in 2018 by students of the Higher Technological Institute, competing locally and internationally.</p>
+          <p className='w-95 '>We are an electric vehicle team that started in 2018 from students of the Higher Technological Institute, 10th of Ramadan. We participate in many competitions inside and outside Egypt</p>
 
           {/* sign in and sign up button================================================> */}
           {!token ? <div className={`${style.buttons}    `}>

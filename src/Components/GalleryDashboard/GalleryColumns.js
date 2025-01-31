@@ -31,25 +31,27 @@ export const galleryColumns = ({ deleteGalleryItem, setSelectedItemId }) => [
     sortable: true,
     cell: (row) => <span className={style.categoryCell}>{row.category}</span>,
   },
-  
+
   {
     name: 'Actions',
     cell: (row) => (
       <div className={style.actionsContainer}>
-        <button
-          onClick={() => deleteGalleryItem(row._id)}
-          className={style.deleteButton}
-        >
-          Delete
-        </button>
-        <button
-          data-bs-toggle="modal"
-          data-bs-target="#modal2"
-          onClick={() => setSelectedItemId(row._id)} 
-          className={style.updateButton}
-        >
-          Update
-        </button>
+        <div className={`${style.buttonsContainer}`}>
+          <button
+            onClick={() => deleteGalleryItem(row._id)}
+            className={style.deleteButton}
+          >
+            Delete
+          </button>
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#modal2"
+            onClick={() => setSelectedItemId(row._id)}
+            className={style.updateButton}
+          >
+            Update
+          </button>
+        </div>
       </div>
     ),
     ignoreRowClick: true,

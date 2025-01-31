@@ -1,38 +1,32 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useQuery } from 'react-query';
 import style from './GalleryDashboard.module.css';
-
-
-
+import { teamsContext } from '../../Context/TeamsContext';
 
 const menuCategories = ['cars', 'competitions', 'events', 'teams', 'subTeams'];
-const teams = ['Operation', 'Shell', 'Formula', 'Ever'];
-const subTeams = [
-    'Vehicle Dynamics',
-    'Frame',
-    'Power Train',
-    'Drive Line',
-    'Electrical',
-    'Embedded Systems',
-    'Autonomous',
-    'Cost and Manufacturing',
-    'Media And Marketing',
-    'Business Plan',
-    'External Relations',
-    'CS']
 
+// Fetch sub-teams data by team ID
+const fetchSubTeamsByTeamId = async (teamId) => {
+    try {
+        const { data } = await axios.get(`https://apexracingteam-eg.onrender.com/subteams/teams/${teamId}`);
+        return data?.data;
+    } catch (error) {
+        throw new Error('Failed to fetch sub-teams data');
+    }
+};
 
+export default function UpdateGalleryImage({ galleryItemId, galleryData, refetch }) {
 
-
-
-export default function UpdateGalleryImage({ galleryItemId, galleryData }) {
+    const { teamsData } = useContext(teamsContext);
 
     // hooks===========================================================>
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [selectedTeamId, setSelectedTeamId] = useState(null);
     const [initialValues, setInitialValues] = useState({
         category: '',
         title: '',
@@ -42,11 +36,24 @@ export default function UpdateGalleryImage({ galleryItemId, galleryData }) {
         subTeam: '',
         priority: 1,
         isHighlighted: false,
-
         landingPageVisibility: false,
         gallerySectionVisibility: false,
     });
     const token = `accesstoken_${localStorage.getItem('token')}`;
+
+    // Fetch sub-teams data based on selected team
+    const { data: subTeamsData } = useQuery(
+        ['subTeams', selectedTeamId],
+        () => fetchSubTeamsByTeamId(selectedTeamId),
+        {
+            enabled: !!selectedTeamId, // Only fetch if selectedTeamId is set
+            staleTime: Infinity,
+            cacheTime: 3600000,
+            refetchOnWindowFocus: false,
+            refetchOnReconnect: false,
+            refetchInterval: false,
+        }
+    );
 
     // Fetch data when galleryItemId changes ==========================================
     useEffect(() => {
@@ -65,9 +72,14 @@ export default function UpdateGalleryImage({ galleryItemId, galleryData }) {
                     landingPageVisibility: galleryItem.landingPageVisibility,
                     gallerySectionVisibility: galleryItem.gallerySectionVisibility,
                 });
+                // Set the selected team ID based on the initial team value
+                const selectedTeam = teamsData.find(team => team.title === galleryItem.team);
+                if (selectedTeam) {
+                    setSelectedTeamId(selectedTeam._id);
+                }
             }
         }
-    }, [galleryItemId, galleryData]);
+    }, [galleryItemId, galleryData, teamsData]);
 
     // validationSchema================================================>
     const validationSchema = Yup.object({
@@ -107,6 +119,7 @@ export default function UpdateGalleryImage({ galleryItemId, galleryData }) {
                     }
                 );
                 setSuccessMessage(response.data.message || 'Image updated successfully!');
+                refetch()
                 resetForm();
             } catch (error) {
                 setErrorMessage(error.response?.data?.message || 'Failed to update image. Please try again.');
@@ -116,8 +129,17 @@ export default function UpdateGalleryImage({ galleryItemId, galleryData }) {
         }, [galleryItemId]),
     });
 
+    // Handle team change
+    const handleTeamChange = (e) => {
+        const selectedTeam = teamsData.find(team => team.title === e.target.value);
+        if (selectedTeam) {
+            setSelectedTeamId(selectedTeam._id);
+        }
+        formik.handleChange(e);
+    };
+
     return (
-        <div className="modal fade w-100" id="modal2" tabIndex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+        <div className={`${style.updateImageModal} modal fade w-100`} id="modal2" tabIndex="-1" aria-labelledby="modal1Label" aria-hidden="true">
             <div className={`${style.modalDialog} modal-dialog`}>
                 <div className="modal-content">
                     {/*modal header */}
@@ -184,6 +206,30 @@ export default function UpdateGalleryImage({ galleryItemId, galleryData }) {
                                 <div className="d-flex justify-content-between gap-3 mb-3">
 
                                     <div className="w-100">
+                                        <label htmlFor="team">
+                                            <span className={`${style.redStar} me-1`}>*</span>Team:
+                                        </label>
+                                        <select
+                                            id="team"
+                                            name="team"
+                                            value={formik.values.team}
+                                            onChange={handleTeamChange}
+                                            onBlur={formik.handleBlur}
+                                            className={`form-select ${formik.touched.team && formik.errors.team ? 'is-invalid' : ''}`}
+                                        >
+                                            <option value="">Select a team</option>
+                                            {teamsData?.map((team) => (
+                                                <option key={team._id} value={team.title}>
+                                                    {team.title}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        {formik.touched.team && formik.errors.team && (
+                                            <div className="alert alert-danger py-1 mt-1">{formik.errors.team}</div>
+                                        )}
+                                    </div>
+
+                                    <div className="w-100">
                                         <label htmlFor="subTeam">
                                             <span className={`${style.redStar} me-1`}>*</span>Sub-Team:
                                         </label>
@@ -196,38 +242,14 @@ export default function UpdateGalleryImage({ galleryItemId, galleryData }) {
                                             className={`form-select ${formik.touched.subTeam && formik.errors.subTeam ? 'is-invalid' : ''}`}
                                         >
                                             <option value="">Select a sub-team</option>
-                                            {subTeams.map((option) => (
-                                                <option key={option} value={option}>
-                                                    {option}
+                                            {subTeamsData?.map((subTeam) => (
+                                                <option key={subTeam._id} value={subTeam.title}>
+                                                    {subTeam.title}
                                                 </option>
                                             ))}
                                         </select>
                                         {formik.touched.subTeam && formik.errors.subTeam && (
                                             <div className="alert alert-danger py-1 mt-1">{formik.errors.subTeam}</div>
-                                        )}
-                                    </div>
-
-                                    <div className="w-100">
-                                        <label htmlFor="team">
-                                            <span className={`${style.redStar} me-1`}>*</span>Team:
-                                        </label>
-                                        <select
-                                            id="team"
-                                            name="team"
-                                            value={formik.values.team}
-                                            onChange={formik.handleChange}
-                                            onBlur={formik.handleBlur}
-                                            className={`form-select ${formik.touched.team && formik.errors.team ? 'is-invalid' : ''}`}
-                                        >
-                                            <option value="">Select a team</option>
-                                            {teams.map((option) => (
-                                                <option key={option} value={option}>
-                                                    {option}
-                                                </option>
-                                            ))}
-                                        </select>
-                                        {formik.touched.team && formik.errors.team && (
-                                            <div className="alert alert-danger py-1 mt-1">{formik.errors.team}</div>
                                         )}
                                     </div>
 
@@ -267,7 +289,7 @@ export default function UpdateGalleryImage({ galleryItemId, galleryData }) {
                             </div>
 
                             {/* Boolean inputs */}
-                            <div className="d-flex justify-content-between mb-3">
+                            <div className="d-flex justify-content-between mb-3 flex-wrap">
                                 {[{ name: 'isHighlighted', label: 'Is Highlighted' }, { name: 'landingPageVisibility', label: 'Landing Page Visibility' }, { name: 'gallerySectionVisibility', label: 'Gallery Section Visibility' }].map((field) => (
                                     <div className="d-flex align-items-center" key={field.name}>
                                         <label className="m-0" htmlFor={field.name}>{field.label}:</label>
@@ -305,7 +327,11 @@ export default function UpdateGalleryImage({ galleryItemId, galleryData }) {
                             {errorMessage && <div className="alert alert-danger py-2 mt-2">{errorMessage}</div>}
 
                             {/* Submit button */}
-                            <button type="submit">
+                            <button
+                                disabled={!(formik.dirty && formik.isValid) || isSubmitting}
+                                className={`${isSubmitting ? style.isSubmittingStyle : ''}`}
+
+                                type="submit">
                                 {isSubmitting ? 'Updating...' : 'Update Image'}
                             </button>
                         </form>

@@ -22,10 +22,10 @@ export default function VisionAndMissionSection() {
                     </h2>
 
                     <p>
-                        Apex Racing Team works to support Egypt’s Vision 2030 by building safe, efficient, and eco-friendly electric cars that can replace gasoline-powered vehicles. We also aim to spread awareness about the importance of using green energy.
+                        By supporting Egypt’s Vision 2030, Apex Racing team aim to make a change in the world by manufacturing safe, efficient and drivable urban electric vehicles that can replace petroleum ones, and to increase the awareness about the importance of using the green energy.
                     </p>
                     <p>
-                        Apex Racing Team supports Egypt’s Vision 2030 by creating safe, efficient, and practical electric cars that can replace gasoline-powered vehicles. We also aim to raise awareness about the importance of using green energy.
+                        Our mission is to foster the transfer of knowledge and awareness across generations while driving sustainable development to create a lasting, positive impact on our community and environment.
                     </p>
 
                 </div>

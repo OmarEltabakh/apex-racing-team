@@ -8,7 +8,6 @@ import style from './SubTeamPage.module.css';
 import ScrollToTop from '../../Components/ScrollToTop/ScrollToTop';
 import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen';
 
-const teamDesc = `Formula Student UK is one of the world's leading engineering competitions, held annually under the auspices of the Institution of Mechanical Engineers (IMechE). The competition challenges student teams to design, manufacture, test, and race single-seater race cars. FSUK emphasizes developing students' practical engineering skills while encouraging innovation, sustainability, and cost-effectiveness. Teams compete in various categories, including design, cost and manufacturing, and overall performance, with a focus on testing the car's speed, efficiency, and handling capabilities.`
 const token = localStorage.getItem("token");
 
 
@@ -42,6 +41,8 @@ export default function SubTeamPage() {
       refetchInterval: false,
     }
   );
+
+
 
 
 
@@ -82,10 +83,10 @@ export default function SubTeamPage() {
               <div className={`${style.section1Content}`}>
                 <div style={{ backgroundColor: teamColor }} className={`${style.Section1VerticalLine}`} />
                 <h2>{teamData?.title}</h2>
-                <p>{teamDesc}</p>
+                <p>{teamData?.longDescription}</p>
               </div>
               <div className={`${style.section1Image}`}>
-                <img src={teamData?.images[1]?.secure_url} alt={`${teamData?.title}_image`} loading='lazy' />
+                <img src={teamData?.teamImage?.secure_url} alt={`${teamData?.title}_image`} loading='lazy' />
               </div>
             </div>
           </section>
@@ -97,13 +98,13 @@ export default function SubTeamPage() {
               <div className={`${style.subteamContainer} `}>
                 <div style={{ backgroundColor: teamColor }} className={`${style.Section2VerticalLine}`} />
                 {teamData?.subteams.map((item, index) => (
-                  <div key={index} className={`${style.subTeamCardContainer} ${index % 2 === 0 ? '' : 'justify-content-end'} ${index === 0 ? '' : 'mt-5'}`}>
+                  <div key={index} className={` ${style.subTeamCardContainer} ${index % 2 === 0 ? '' : 'justify-content-end'} ${index === 0 ? '' : 'mt-5'}`}>
                     <div className={`${index % 2 === 0 ? style.circleContainerLeft : style.circleContainerRight}`}>
                       <div style={{ border: `3px solid ${teamColor}` }} className={`${style.circle}`} />
                       <h6 className="mx-3">{item.title}</h6>
                     </div>
 
-                    <div style={{ borderBottom: `5px solid ${teamColor}` }} className={`${style.subTeamCard} rounded-2`}>
+                    <div style={{ borderBottom: `5px solid ${teamColor}` }} className={`  ${style.subTeamCard} rounded-2`}>
                       <div className={`${index % 2 === 0 ? style.triangleLeft : style.triangleRight}`} />
                       <div className={`${style.layerContainer}`}>
                         <div className={`${style.layer} d-flex justify-content-center align-items-center`}>
@@ -126,7 +127,7 @@ export default function SubTeamPage() {
                             <h6 className='' onClick={() => handleNavigation("subteam", item._id)}>More Details</h6>
                           </div>
                         </div>
-                        <img className="w-100" src={item.images[0].secure_url} alt={''} />
+                        <img className="w-100" src={item.images[0]?.secure_url} alt={''} />
                       </div>
                     </div>
                   </div>

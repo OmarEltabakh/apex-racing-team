@@ -14,9 +14,11 @@ export default function NavBar() {
     if (token) {
       const decodedToken = jwtDecode(token);
       setRole(decodedToken.role);
+    
     }
   }, []);
 
+  
   // Navigation items
   const navItems = useMemo(() => ["Home", "About Us", "Teams", "Gallery"], []);
 

@@ -17,7 +17,6 @@ import LearningPhaseDashboard from './Components/LearningPhaseDashboard/Learning
 import GalleryContextProvider from './Context/GalleryContext';
 import TeamsPage from './Pages/TeamsPage/TeamsPage';
 import TeamsContextProvider from './Context/TeamsContext';
-import SubTeamsContextProvider from './Context/SubTeamsContext';
 
 
 export default function App() {
@@ -52,12 +51,11 @@ export default function App() {
 
   return <>
 
-      <SubTeamsContextProvider>
         <TeamsContextProvider>
           <GalleryContextProvider>
             <RouterProvider router={routers} />
           </GalleryContextProvider>
         </TeamsContextProvider>
-      </SubTeamsContextProvider>
+     
   </>
 }

@@ -4,6 +4,7 @@ import style from "./Memebers.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { settings } from "./SliderSettings";
+import placeHolderImage from "../../Assets/placeholder-image-person-jpg.webp";
 
 export default function Memebers({ members }) {
 
@@ -12,9 +13,10 @@ export default function Memebers({ members }) {
     return <h2 className="text-center mb-5">No members available.</h2>;
   }
 
+
   return (
-    <section className={`${style.membersSection}`}>
-      <div className={`${style.membersContainer} myContainer`}>
+    <section className={`${style.membersSection} `}>
+      <div className={`${style.membersContainer} myContainer `}>
         <h2>Our Members</h2>
 
         <div className={`${style.sliderContainer}`}>
@@ -25,7 +27,7 @@ export default function Memebers({ members }) {
                   <div className={style.memberImage}>
                     <img
                       className="w-100"
-                      src={member.profilePicture?.secure_url || '/path/to/default-image.jpg'}
+                      src={member.profilePicture?.secure_url || placeHolderImage}
                       alt={member.name || "Member"}
                       loading="lazy" // Lazy load the images
                     />
@@ -35,14 +37,14 @@ export default function Memebers({ members }) {
                     <p>{member.role === "admin" ? "Head" : member.role === "super" ? "Leader" : member.role}</p>
                   </div>
                   <div className={style.memberAccount}>
-                    {member.linkedin && (
+                    {member.linkedIn && (
                       <a href={member.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                        <i className="fa-brands fa-linkedin-in"></i>
+                        <i className={`${style.linkedInLogo} fa-brands fa-linkedin-in`}></i>
                       </a>
                     )}
                     {member.github && (
-                      <a href={member.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                        <i className="fa-brands fa-github"></i>
+                      <a className="" href={member.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                        <i className={`${style.githubLogo} fa-brands fa-github`}></i>
                       </a>
                     )}
                   </div>

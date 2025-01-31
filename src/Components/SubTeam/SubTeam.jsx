@@ -44,8 +44,6 @@ export default function SubTeam() {
 
 
 
-
-
   return <>
     <ScrollToTop />
     {isLoading ? <LoadingScreen /> :
@@ -55,12 +53,8 @@ export default function SubTeam() {
 
           <div className={`${style.subTeamContent} `}>
             <h2>{subTeamData?.data.title}</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Cursus id mus feugiat purusljkjklj
-              risus nunc. Auctor pellentesque lectus nam faucibus est nisl. Aliquam
-              integer gravida risus eu auctor. Ipsum hac elit proin quam. Elit amet
-              eget dictum cursus imperdiet elementum. Et neque quis faucibus id.
-            </p>
+            <p>{subTeamData?.data?.description} </p>
+          
           </div>
 
           <div className={`${style.subTeamImage} `}>

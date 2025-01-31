@@ -52,3 +52,83 @@
   border-radius: 3px;
   font-size: 1.125rem;
 }
+
+/* add video from style ================================>*/
+
+
+.addVideoForm label {
+  font-size: var(--font-size-h6);
+  font-weight: 600;
+  color: #595c5f;
+  margin-bottom: 10px;
+}
+
+
+.addVideoForm input:focus, .addVideoForm select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.addVideoForm input, .addVideoForm select {
+  padding: .5rem .3125rem;
+  border-radius: 5px;
+  border: solid 2px #e1e2e4 !important;
+  background-color: var(--bgc2);
+
+}
+
+.addVideoForm .inputFiled input {
+  width: 100% !important;
+}
+
+.addVideoForm .inputFiled input:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
+.modalHeader h1 {
+  font-size: var(--font-size-h6);
+  font-weight: 600;
+  color: var(--primaryColor);
+
+
+}
+
+
+.addVideoForm button {
+  width: 100%;
+  padding: .75rem .625rem;
+  font-size: var(--font-size-h6);
+  font-weight: 600;
+  color: #9c1510;
+  border-radius: 5px;
+  background-color: var(--bgc2);
+  border: 2px solid #9c1510;
+  transition: .3s transform ease-in-out;
+}
+
+
+.addVideoForm button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+  transform: none !important;
+
+}
+
+.addVideoForm button:hover {
+  transform: translateY(-5%);
+}
+
+.modalDialog {
+  max-width: 900px !important;
+}
+
+.redStar {
+
+  color: red;
+}
+
+/* add video styles===========================> */
+.addVideoModal{
+  z-index: 999999999 !important;
+}

@@ -177,12 +177,14 @@
     position: relative;
     border-radius: .3125rem;
 
+    
 
 }
 
 .subTeamCard img {
     border-top-left-radius: .3125rem;
     border-top-right-radius: .3125rem;
+    object-fit: cover;
 }
 
 

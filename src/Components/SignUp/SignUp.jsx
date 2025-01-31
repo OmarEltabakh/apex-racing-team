@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 
 export default function SignUp() {
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -17,17 +18,11 @@ export default function SignUp() {
     phone: Yup.string().required('Phone is required'),
     firstName: Yup.string().required('First Name is required'),
     lastName: Yup.string().required('Last Name is required'),
-    password: Yup.string()
-      .required('Password is required')
-      .min(6, 'Password must be at least 6 characters'),
-
-    image: Yup.mixed()
-      .required('Image is required')
-      .test('fileSize', 'File size too large (max 2MB)', (value) => !value || value.size <= 2 * 1024 * 1024)
-      .test('fileType', 'Unsupported file format', (value) =>
-        !value || ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(value.type)
-      ),
-
+    password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
+    linkedIn: Yup.string().url('Invalid LinkedIn URL').nullable(),
+    github: Yup.string().url('Invalid GitHub URL').nullable(),
+    image: Yup.mixed().nullable().notRequired().test('fileSize','File size too large (max 2MB)', (value) => !value || (value.size <= 2 * 1024 * 1024))
+      .test('fileType','Unsupported file format',(value) =>!value || ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(value.type)),
   });
 
   const signUpSubmit = async (values) => {
@@ -61,6 +56,8 @@ export default function SignUp() {
       firstName: '',
       lastName: '',
       password: '',
+      linkedIn: '',
+      github: '',
       image: null,
     },
     validationSchema,
@@ -71,16 +68,11 @@ export default function SignUp() {
     <section className={`${style.SignUp} `}>
       <div className={`${style.SignUpContainer} myContainer`}>
         <div className={`${style.SignUpContent} shadow  `}>
-          <h2 >Sign Up</h2>
-
+          <h2>Sign Up</h2>
 
           <form onSubmit={formik.handleSubmit} className={style.signUpForm}>
-
-
-
             {/* row1 */}
             <div className={`${style.rowContainer} d-flex justify-content-center w-100 `}>
-
               <div className="form-group w-100 me-3">
                 <label htmlFor="firstName">First Name:</label>
                 <input
@@ -115,7 +107,6 @@ export default function SignUp() {
                 )}
               </div>
             </div>
-
 
             {/* row2 */}
             <div className={`${style.rowContainer} d-flex justify-content-center w-100 `}>
@@ -154,10 +145,8 @@ export default function SignUp() {
               </div>
             </div>
 
-
             {/* row3 */}
             <div className={`${style.rowContainer} d-flex justify-content-center w-100  `}>
-
               <div className="form-group me-3 w-100">
                 <label htmlFor="password">Password:</label>
                 <input
@@ -193,7 +182,42 @@ export default function SignUp() {
               </div>
             </div>
 
+            {/* row4 */}
+            <div className={`${style.rowContainer} d-flex justify-content-center w-100 `}>
+              <div className="form-group w-100 me-3">
+                <label htmlFor="linkedIn">LinkedIn URL:</label>
+                <input
+                  id="linkedIn"
+                  name="linkedIn"
+                  type="url"
+                  value={formik.values.linkedIn}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className={`form-control ${formik.touched.linkedIn && formik.errors.linkedIn ? 'is-invalid' : ''
+                    }`}
+                />
+                {formik.touched.linkedIn && formik.errors.linkedIn && (
+                  <div className="alert alert-danger py-2 mt-2">{formik.errors.linkedIn}</div>
+                )}
+              </div>
 
+              <div className="form-group w-100">
+                <label htmlFor="github">GitHub URL:</label>
+                <input
+                  id="github"
+                  name="github"
+                  type="url"
+                  value={formik.values.github}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className={`form-control ${formik.touched.github && formik.errors.github ? 'is-invalid' : ''
+                    }`}
+                />
+                {formik.touched.github && formik.errors.github && (
+                  <div className="alert alert-danger py-2 mt-2">{formik.errors.github}</div>
+                )}
+              </div>
+            </div>
 
             {error && <div className="alert alert-danger py-2 mt-2">{error}</div>}
             {success && <div className="alert alert-success py-2 mt-2">{success}</div>}

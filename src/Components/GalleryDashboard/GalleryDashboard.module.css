@@ -1,6 +1,6 @@
 /* dashboardHeader */
 .GalleryDashboard {
-    border-radius: 5px;
+    border-radius: .3125rem;
     background-color: var(--bgc2);
     padding: 1.5625rem 1.25rem;
     border: solid 2px #d4d5d6;
@@ -17,7 +17,7 @@
     color: white;
     border: none;
     padding: .5rem 1rem;
-    border-radius: 3px;
+    border-radius: .1875rem;
     font-size: 1.125rem;
 
 
@@ -28,15 +28,16 @@
     color: var(--secondaryColor);
 }
 
-.teamCell, .emailCell {
-    width: 400px !important;
+.buttonsContainer {
+    width: 12.5rem !important;
+
 }
 
 .deleteButton, .updateButton {
     font-size: .9375rem;
     background-color: #e13647;
     padding: .375rem .5rem;
-    border-radius: 3px;
+    border-radius: .1875rem;
     color: white;
     border: none;
     margin-right: .3125rem;
@@ -47,7 +48,7 @@
 }
 
 .galleryImageContainer {
-    max-height: 50px;
+    max-height: 3.125rem;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -58,12 +59,17 @@
 
 
 /* addGalleryImageComponent Styles */
+.dashboardHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--margin-between-items);
+}
+
 .dashboardHeader input {
     padding: .5rem;
-    margin-bottom: var(--margin-between-items);
     width: 18.75rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: .25rem;
 }
 
 .dashboardHeader input:focus {
@@ -77,18 +83,18 @@
     font-size: var(--font-size-h6);
     font-weight: 600;
     color: #595c5f;
-    margin-bottom: 10px;
+    margin-bottom: .625rem;
 }
 
 
-.addImageForm input:focus , .addImageForm select:focus {
+.addImageForm input:focus, .addImageForm select:focus {
     outline: none !important;
     box-shadow: none !important;
 }
 
-.addImageForm input , .addImageForm select {
+.addImageForm input, .addImageForm select {
     padding: .5rem .3125rem;
-    border-radius: 5px;
+    border-radius: .3125rem;
     border: solid 2px #e1e2e4 !important;
     background-color: var(--bgc2);
 
@@ -124,6 +130,14 @@
     transition: .3s transform ease-in-out;
 }
 
+
+.addImageForm button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+    transform: none !important;
+
+}
+
 .addImageForm button:hover {
     transform: translateY(-5%);
 }
@@ -135,4 +149,25 @@
 .redStar {
 
     color: red;
+}
+
+
+@media (max-width:500px) {
+    .dashboardHeader input {
+        width: 12.75rem;
+
+    }
+
+}
+
+@media (max-width:500px) {
+    .dashboardHeader input {
+        width: 10.75rem;
+    }
+
+}
+
+/* add image and udpate image styles===============> */
+.addImageModal , .updateImageModal{
+    z-index: 9999999999 !important;
 }
